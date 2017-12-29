@@ -1,0 +1,7 @@
+_Timer0_Init: CODE, 63 0 12
+_NVIC_Configuration: CODE, 75 0 4
+_main: CODE, 26 0 25
+_tc_int: CODE, 4 0 13
+_OSC_Init: CODE, 51 0 12
+_Delay_ms: CODE, 79 0 21
+Total: 87

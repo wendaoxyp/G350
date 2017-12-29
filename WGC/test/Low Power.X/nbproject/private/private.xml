@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/User/main.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/User/E41.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/BSP/includes.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/User/E41.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/BSP/RS485.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/BSP/RS485.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/User/PCF8583.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/User/CheckData.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/User/CAT24C512.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/User/CAT24C512.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/BSP/I2C.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/BSP/NVIC.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/BSP/bsp.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/BSP/Configbits.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/BSP/Sleep.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/BSP/DeepSleep.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/WGC/test/Low%20Power.X/BSP/DeepSleep.c</file>
+        </group>
+    </open-files>
+</project-private>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/pic24FJ128GA010/production/OS-Probe.X.production.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>8192</length>
+      <used>6504</used>
+      <free>1688</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>131322</length>
+      <used>61779</used>
+      <free>69543</free>
+    </memory>
+  </executable>
+</project>

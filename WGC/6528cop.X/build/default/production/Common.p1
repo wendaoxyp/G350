@@ -1,0 +1,492 @@
+Version 3.2 HI-TECH Software Intermediate Code
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;Common.h: 18: extern void FloatToChar(float *f, uint8_t *ch);
+[; ;Common.h: 19: extern void CharToFloat(float *f, uint8_t *ch);
+[; ;Common.h: 20: extern void DoubleToChar(long double *d, uint8_t *ch);
+[; ;Common.h: 21: uint8_t HCD(uint8_t dat);
+[; ;Common.h: 22: uint8_t DCH(uint8_t dat);
+[; ;Common.h: 23: extern void SetVaildData(uint8_t * dat, const uint32_t max, const uint16_t min);
+[; ;Common.h: 24: bool DataIsVaild(uint16_t dat, const uint16_t max, const uint16_t min);
+[; ;Common.h: 25: extern void DataReverse(uint8_t *dat, const uint8_t byte);
+[; ;Common.h: 26: extern void Delay10ms(char time);
+[; ;Common.h: 27: extern void Delay100ms(char time);
+[; ;Common.h: 28: extern void Delay1s(char time);
+[; ;Common.h: 29: extern void CopyDat(uint8_t* output, uint8_t* input, const uint8_t bytes);
+[; ;Common.h: 30: extern void ClearDat(uint8_t* output, const uint8_t dat, const uint8_t bytes);
+"9 Common.c
+[v _FloatToChar `(v ~T0 @X0 1 ef2`*f`*uc ]
+{
+[; ;Common.c: 9: void FloatToChar(float *f, uint8_t *ch) {
+[e :U _FloatToChar ]
+[v _f `*f ~T0 @X0 1 r1 ]
+[v _ch `*uc ~T0 @X0 1 r2 ]
+[f ]
+"10
+[v _count `uc ~T0 @X0 1 a ]
+"11
+[v _pf `*v ~T0 @X0 1 a ]
+[; ;Common.c: 10: uint8_t count;
+[; ;Common.c: 11: void * pf;
+[; ;Common.c: 12: pf = f;
+"12
+[e = _pf -> _f `*v ]
+[; ;Common.c: 14: for (count = 0; count < 4; count++) {
+"14
+{
+[e = _count -> -> 0 `i `uc ]
+[e $ < -> _count `i -> 4 `i 2  ]
+[e $U 3  ]
+[e :U 2 ]
+{
+[; ;Common.c: 15: *(ch + count) = *((uint8_t *) pf + 3 - count);
+"15
+[e = *U + _ch * -> _count `ux -> -> # *U _ch `ui `ux *U - + -> _pf `*uc * -> -> 3 `i `x -> -> # *U -> _pf `*uc `i `x * -> _count `ux -> -> # *U + -> _pf `*uc * -> -> 3 `i `x -> -> # *U -> _pf `*uc `i `x `ui `ux ]
+"16
+}
+"14
+[e ++ _count -> -> 1 `i `uc ]
+[e $ < -> _count `i -> 4 `i 2  ]
+[e :U 3 ]
+"16
+}
+[; ;Common.c: 16: }
+[; ;Common.c: 17: }
+"17
+[e :UE 1 ]
+}
+"25
+[v _CharToFloat `(v ~T0 @X0 1 ef2`*f`*uc ]
+{
+[; ;Common.c: 25: void CharToFloat(float *f, uint8_t *ch) {
+[e :U _CharToFloat ]
+[v _f `*f ~T0 @X0 1 r1 ]
+[v _ch `*uc ~T0 @X0 1 r2 ]
+[f ]
+"26
+[v _count `uc ~T0 @X0 1 a ]
+"27
+[v _pf `*v ~T0 @X0 1 a ]
+[; ;Common.c: 26: uint8_t count;
+[; ;Common.c: 27: void *pf;
+[; ;Common.c: 28: pf = f;
+"28
+[e = _pf -> _f `*v ]
+[; ;Common.c: 30: for (count = 0; count < 4; count++) {
+"30
+{
+[e = _count -> -> 0 `i `uc ]
+[e $ < -> _count `i -> 4 `i 6  ]
+[e $U 7  ]
+[e :U 6 ]
+{
+[; ;Common.c: 31: *((uint8_t *) pf + count) = *(ch + 3 - count);
+"31
+[e = *U + -> _pf `*uc * -> _count `ux -> -> # *U -> _pf `*uc `ui `ux *U - + _ch * -> -> 3 `i `x -> -> # *U _ch `i `x * -> _count `ux -> -> # *U + _ch * -> -> 3 `i `x -> -> # *U _ch `i `x `ui `ux ]
+"32
+}
+"30
+[e ++ _count -> -> 1 `i `uc ]
+[e $ < -> _count `i -> 4 `i 6  ]
+[e :U 7 ]
+"32
+}
+[; ;Common.c: 32: }
+[; ;Common.c: 33: }
+"33
+[e :UE 5 ]
+}
+"41
+[v _DoubleToChar `(v ~T0 @X0 1 ef2`*d`*uc ]
+{
+[; ;Common.c: 41: void DoubleToChar(long double *d, uint8_t *ch) {
+[e :U _DoubleToChar ]
+[v _d `*d ~T0 @X0 1 r1 ]
+[v _ch `*uc ~T0 @X0 1 r2 ]
+[f ]
+"42
+[v _count `uc ~T0 @X0 1 a ]
+"43
+[v _pf `*v ~T0 @X0 1 a ]
+[; ;Common.c: 42: uint8_t count;
+[; ;Common.c: 43: void * pf;
+[; ;Common.c: 44: pf = d;
+"44
+[e = _pf -> _d `*v ]
+[; ;Common.c: 46: for (count = 0; count < 8; count++) {
+"46
+{
+[e = _count -> -> 0 `i `uc ]
+[e $ < -> _count `i -> 8 `i 10  ]
+[e $U 11  ]
+[e :U 10 ]
+{
+[; ;Common.c: 47: *(ch + count) = *((uint8_t *) pf + 7 - count);
+"47
+[e = *U + _ch * -> _count `ux -> -> # *U _ch `ui `ux *U - + -> _pf `*uc * -> -> 7 `i `x -> -> # *U -> _pf `*uc `i `x * -> _count `ux -> -> # *U + -> _pf `*uc * -> -> 7 `i `x -> -> # *U -> _pf `*uc `i `x `ui `ux ]
+"48
+}
+"46
+[e ++ _count -> -> 1 `i `uc ]
+[e $ < -> _count `i -> 8 `i 10  ]
+[e :U 11 ]
+"48
+}
+[; ;Common.c: 48: }
+[; ;Common.c: 49: }
+"49
+[e :UE 9 ]
+}
+"57
+[v _HCD `(uc ~T0 @X0 1 ef1`uc ]
+{
+[; ;Common.c: 57: uint8_t HCD(uint8_t dat) {
+[e :U _HCD ]
+[v _dat `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;Common.c: 58: return ((dat >> 4)&0x0f)*10 + (dat & 0x0f);
+"58
+[e ) -> + * & >> -> _dat `i -> 4 `i -> 15 `i -> 10 `i & -> _dat `i -> 15 `i `uc ]
+[e $UE 13  ]
+[; ;Common.c: 59: }
+"59
+[e :UE 13 ]
+}
+"67
+[v _DCH `(uc ~T0 @X0 1 ef1`uc ]
+{
+[; ;Common.c: 67: uint8_t DCH(uint8_t dat) {
+[e :U _DCH ]
+[v _dat `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;Common.c: 68: return ((dat / 10 << 4)&0xF0) | ((dat % 10)&0x0F);
+"68
+[e ) -> | & << / -> _dat `i -> 10 `i -> 4 `i -> 240 `i & % -> _dat `i -> 10 `i -> 15 `i `uc ]
+[e $UE 14  ]
+[; ;Common.c: 69: }
+"69
+[e :UE 14 ]
+}
+"82
+[v _DataIsVaild `(uc ~T0 @X0 1 ef3`ui`Cui`Cui ]
+{
+[; ;Common.c: 82: bool DataIsVaild(uint16_t dat, const uint16_t max, const uint16_t min) {
+[e :U _DataIsVaild ]
+[v _dat `ui ~T0 @X0 1 r1 ]
+[v _max `Cui ~T0 @X0 1 r2 ]
+[v _min `Cui ~T0 @X0 1 r3 ]
+[f ]
+[; ;Common.c: 83: if (dat > max) return 0;
+"83
+[e $ ! > _dat _max 16  ]
+[e ) -> -> 0 `i `uc ]
+[e $UE 15  ]
+[e $U 17  ]
+"84
+[e :U 16 ]
+[; ;Common.c: 84: else if (dat < min) return 0;
+[e $ ! < _dat _min 18  ]
+[e ) -> -> 0 `i `uc ]
+[e $UE 15  ]
+[e :U 18 ]
+"85
+[e :U 17 ]
+[; ;Common.c: 85: return 1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 15  ]
+[; ;Common.c: 86: }
+"86
+[e :UE 15 ]
+}
+"94
+[v _SetVaildData `(v ~T0 @X0 1 ef3`*uc`Cul`Cui ]
+{
+[; ;Common.c: 94: void SetVaildData(uint8_t * dat, const uint32_t max, const uint16_t min) {
+[e :U _SetVaildData ]
+[v _dat `*uc ~T0 @X0 1 r1 ]
+[v _max `Cul ~T0 @X0 1 r2 ]
+[v _min `Cui ~T0 @X0 1 r3 ]
+[f ]
+"95
+[v _tmp `ui ~T0 @X0 1 a ]
+[; ;Common.c: 95: uint16_t tmp = (* dat << 8) + *(dat + 1);
+[e = _tmp -> + << -> *U _dat `i -> 8 `i -> *U + _dat * -> -> 1 `i `x -> -> # *U _dat `i `x `i `ui ]
+[; ;Common.c: 97: if (tmp > max) {
+"97
+[e $ ! > -> _tmp `ul _max 20  ]
+{
+[; ;Common.c: 98: *dat = max >> 8;
+"98
+[e = *U _dat -> >> _max -> 8 `i `uc ]
+[; ;Common.c: 99: *(dat + 1) = max & 0x00ff;
+"99
+[e = *U + _dat * -> -> 1 `i `x -> -> # *U _dat `i `x -> & _max -> -> -> 255 `i `l `ul `uc ]
+"100
+}
+[; ;Common.c: 100: } else if (tmp < min) {
+[e $U 21  ]
+[e :U 20 ]
+[e $ ! < _tmp _min 22  ]
+{
+[; ;Common.c: 101: *dat = min >> 8;
+"101
+[e = *U _dat -> >> _min -> 8 `i `uc ]
+[; ;Common.c: 102: *(dat + 1) = min & 0x00ff;
+"102
+[e = *U + _dat * -> -> 1 `i `x -> -> # *U _dat `i `x -> & _min -> -> 255 `i `ui `uc ]
+"103
+}
+[e :U 22 ]
+"104
+[e :U 21 ]
+[; ;Common.c: 103: }
+[; ;Common.c: 104: }
+[e :UE 19 ]
+}
+"107
+[v _DataReverse `(v ~T0 @X0 1 ef2`*uc`Cuc ]
+{
+[; ;Common.c: 107: void DataReverse(uint8_t *dat, const uint8_t byte) {
+[e :U _DataReverse ]
+[v _dat `*uc ~T0 @X0 1 r1 ]
+[v _byte `Cuc ~T0 @X0 1 r2 ]
+[f ]
+"108
+[v _tmp `uc ~T0 @X0 1 a ]
+[v _cnt `uc ~T0 @X0 1 a ]
+[; ;Common.c: 108: uint8_t tmp, cnt;
+[; ;Common.c: 110: for (cnt = 0; cnt < byte / 2; cnt++) {
+"110
+{
+[e = _cnt -> -> 0 `i `uc ]
+[e $ < -> _cnt `i / -> _byte `i -> 2 `i 24  ]
+[e $U 25  ]
+[e :U 24 ]
+{
+[; ;Common.c: 111: tmp = dat[cnt];
+"111
+[e = _tmp *U + _dat * -> _cnt `ux -> -> # *U _dat `ui `ux ]
+[; ;Common.c: 112: dat[cnt] = dat[byte - 1 - cnt];
+"112
+[e = *U + _dat * -> _cnt `ux -> -> # *U _dat `ui `ux *U + _dat * -> - - -> _byte `i -> 1 `i -> _cnt `i `x -> -> # *U _dat `i `x ]
+[; ;Common.c: 113: dat[byte - 1 - cnt] = tmp;
+"113
+[e = *U + _dat * -> - - -> _byte `i -> 1 `i -> _cnt `i `x -> -> # *U _dat `i `x _tmp ]
+"114
+}
+"110
+[e ++ _cnt -> -> 1 `i `uc ]
+[e $ < -> _cnt `i / -> _byte `i -> 2 `i 24  ]
+[e :U 25 ]
+"114
+}
+[; ;Common.c: 114: }
+[; ;Common.c: 115: }
+"115
+[e :UE 23 ]
+}
+"119
+[v _Delay10ms `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;Common.c: 119: void Delay10ms(char time) {
+[e :U _Delay10ms ]
+[v _time `uc ~T0 @X0 1 r1 ]
+[f ]
+"120
+[v _i `ui ~T0 @X0 1 a ]
+[; ;Common.c: 120: uint16_t i;
+[; ;Common.c: 121: while (time-- > 0)
+"121
+[e $U 28  ]
+[e :U 29 ]
+[; ;Common.c: 122: for (i = 0; i < 2620; i++)
+"122
+{
+[e = _i -> -> 0 `i `ui ]
+[e $ < _i -> -> 2620 `i `ui 31  ]
+[e $U 32  ]
+"123
+[e :U 31 ]
+[; ;Common.c: 123: asm("nop");
+[; <" nop ;# ">
+"122
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 2620 `i `ui 31  ]
+[e :U 32 ]
+"123
+}
+[e :U 28 ]
+"121
+[e $ > -> -- _time -> -> 1 `i `uc `i -> 0 `i 29  ]
+[e :U 30 ]
+[; ;Common.c: 125: }
+"125
+[e :UE 27 ]
+}
+"127
+[v _Delay100ms `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;Common.c: 127: void Delay100ms(char time) {
+[e :U _Delay100ms ]
+[v _time `uc ~T0 @X0 1 r1 ]
+[f ]
+"128
+[v _i `ui ~T0 @X0 1 a ]
+[; ;Common.c: 128: uint16_t i;
+[; ;Common.c: 129: while (time-- > 0)
+"129
+[e $U 35  ]
+[e :U 36 ]
+[; ;Common.c: 130: for (i = 0; i < 26000; i++)
+"130
+{
+[e = _i -> -> 0 `i `ui ]
+[e $ < _i -> -> 26000 `i `ui 38  ]
+[e $U 39  ]
+"131
+[e :U 38 ]
+[; ;Common.c: 131: asm("nop");
+[; <" nop ;# ">
+"130
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 26000 `i `ui 38  ]
+[e :U 39 ]
+"131
+}
+[e :U 35 ]
+"129
+[e $ > -> -- _time -> -> 1 `i `uc `i -> 0 `i 36  ]
+[e :U 37 ]
+[; ;Common.c: 133: }
+"133
+[e :UE 34 ]
+}
+"135
+[v _Delay1s `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;Common.c: 135: void Delay1s(char time) {
+[e :U _Delay1s ]
+[v _time `uc ~T0 @X0 1 r1 ]
+[f ]
+"136
+[v _i `ul ~T0 @X0 1 a ]
+[; ;Common.c: 136: uint32_t i;
+[; ;Common.c: 137: while (time-- > 0)
+"137
+[e $U 42  ]
+[e :U 43 ]
+[; ;Common.c: 138: for (i = 0; i < 170000; i++)
+"138
+{
+[e = _i -> -> -> 0 `i `l `ul ]
+[e $ < _i -> -> 170000 `l `ul 45  ]
+[e $U 46  ]
+"139
+[e :U 45 ]
+[; ;Common.c: 139: asm("nop");
+[; <" nop ;# ">
+"138
+[e ++ _i -> -> -> 1 `i `l `ul ]
+[e $ < _i -> -> 170000 `l `ul 45  ]
+[e :U 46 ]
+"139
+}
+[e :U 42 ]
+"137
+[e $ > -> -- _time -> -> 1 `i `uc `i -> 0 `i 43  ]
+[e :U 44 ]
+[; ;Common.c: 141: }
+"141
+[e :UE 41 ]
+}
+"143
+[v _CopyDat `(v ~T0 @X0 1 ef3`*uc`*uc`Cuc ]
+{
+[; ;Common.c: 143: void CopyDat( uint8_t* output,uint8_t *input,const uint8_t bytes) {
+[e :U _CopyDat ]
+[v _output `*uc ~T0 @X0 1 r1 ]
+[v _input `*uc ~T0 @X0 1 r2 ]
+[v _bytes `Cuc ~T0 @X0 1 r3 ]
+[f ]
+"144
+[v _num `uc ~T0 @X0 1 a ]
+[; ;Common.c: 144: uint8_t num;
+[; ;Common.c: 145: for (num = 0; num < bytes; num++)
+"145
+{
+[e = _num -> -> 0 `i `uc ]
+[e $ < -> _num `i -> _bytes `i 49  ]
+[e $U 50  ]
+"146
+[e :U 49 ]
+[; ;Common.c: 146: *(output + num) = *(input + num);
+[e = *U + _output * -> _num `ux -> -> # *U _output `ui `ux *U + _input * -> _num `ux -> -> # *U _input `ui `ux ]
+"145
+[e ++ _num -> -> 1 `i `uc ]
+[e $ < -> _num `i -> _bytes `i 49  ]
+[e :U 50 ]
+"146
+}
+[; ;Common.c: 147: }
+"147
+[e :UE 48 ]
+}
+"149
+[v _ClearDat `(v ~T0 @X0 1 ef3`*uc`Cuc`Cuc ]
+{
+[; ;Common.c: 149: void ClearDat(uint8_t *output, const uint8_t dat, const uint8_t bytes) {
+[e :U _ClearDat ]
+[v _output `*uc ~T0 @X0 1 r1 ]
+[v _dat `Cuc ~T0 @X0 1 r2 ]
+[v _bytes `Cuc ~T0 @X0 1 r3 ]
+[f ]
+"150
+[v _num `uc ~T0 @X0 1 a ]
+[; ;Common.c: 150: uint8_t num;
+[; ;Common.c: 151: for (num = 0; num < bytes; num++)
+"151
+{
+[e = _num -> -> 0 `i `uc ]
+[e $ < -> _num `i -> _bytes `i 53  ]
+[e $U 54  ]
+"152
+[e :U 53 ]
+[; ;Common.c: 152: *(output + num) = dat;
+[e = *U + _output * -> _num `ux -> -> # *U _output `ui `ux _dat ]
+"151
+[e ++ _num -> -> 1 `i `uc ]
+[e $ < -> _num `i -> _bytes `i 53  ]
+[e :U 54 ]
+"152
+}
+[; ;Common.c: 153: }
+"153
+[e :UE 52 ]
+}

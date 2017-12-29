@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1501831896 source:c:\users\administrator\desktop\codeblock\test define\struct tm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<stdint.h>
+

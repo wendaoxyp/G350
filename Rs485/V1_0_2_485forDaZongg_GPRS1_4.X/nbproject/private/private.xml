@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+        <file>
+            <url>Miot1601.c</url>
+            <bookmark id="1">
+                <name/>
+                <line>44</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>NVIC.c</url>
+            <bookmark id="2">
+                <name/>
+                <line>255</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Administrator/Desktop/V1_0_2_485forDaZongg_GPRS1_4.X/note.txt</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_0_2_485forDaZongg_GPRS1_4.X/task.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_0_2_485forDaZongg_GPRS1_4.X/NVIC.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_0_2_485forDaZongg_GPRS1_4.X/RS485.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_0_2_485forDaZongg_GPRS1_4.X/INT.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_0_2_485forDaZongg_GPRS1_4.X/MP.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_0_2_485forDaZongg_GPRS1_4.X/P-Miot1601.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_0_2_485forDaZongg_GPRS1_4.X/user.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_0_2_485forDaZongg_GPRS1_4.X/Miot1601.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_0_2_485forDaZongg_GPRS1_4.X/Miot1601.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_0_2_485forDaZongg_GPRS1_4.X/main.c</file>
+        </group>
+    </open-files>
+</project-private>

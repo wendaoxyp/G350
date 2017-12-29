@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/User/main.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/BSP/NVIC.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/User/WGC.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/User/SerialBuffer.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/User/CAT24C512.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/BSP/bsp.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/BSP/RS485.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/BSP/RTCC.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/BSP/UART2.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/BSP/RS485.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/User/Common.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/User/WGC.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/User/PC.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/p24FJ64GA306.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/BSP/LCD.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/BSP/UART3.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/BSP/DeepSleep.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/BSP/CRC16.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/User/HL6528.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/BSP/TIM.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/BSP/LCD.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/User/SerialBuffer.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/User/CheckData.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/User/CheckData.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/V1_1_8WCGforkjxm.X/User/Common.h</file>
+        </group>
+    </open-files>
+</project-private>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/default/production/RS4851.X.production.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>8192</length>
+      <used>26</used>
+      <free>8166</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>65268</length>
+      <used>1968</used>
+      <free>63300</free>
+    </memory>
+  </executable>
+</project>

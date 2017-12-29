@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/default/production/V1_1_4WCGforkjxm.X.production.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>8192</length>
+      <used>5768</used>
+      <free>2424</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>65268</length>
+      <used>47097</used>
+      <free>18171</free>
+    </memory>
+  </executable>
+</project>

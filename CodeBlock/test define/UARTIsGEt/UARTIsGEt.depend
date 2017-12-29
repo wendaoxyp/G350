@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1385316878 source:c:\users\administrator\desktop\codeblock\test define\uartisget\main.c
+	<stdio.h>
+	<stdlib.h>
+

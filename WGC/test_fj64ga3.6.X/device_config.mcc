@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration device="PIC24FJ64GA306" mcc_version="v2.25.2">
+    <managers>
+        <manager generated="true" name="Pin Manager" reloadPin="manual">
+            <setting name="package" option="TQFP64"/>
+            <setting name="sorting" option="true"/>
+            <resource customName="LED" digital="true" direction="OUTPUT" function="RF0" ioc="0" module="GPIO" name="RF0" start="false" type="pin" wpu="false"/>
+            <file checksum="3973828626" modified="false" name="pin_manager.c" path="mcc_generated_files/pin_manager.c"/>
+            <file checksum="254769450" modified="false" name="pin_manager.h" path="mcc_generated_files/pin_manager.h"/>
+        </manager>
+        <manager generated="true" name="System" reloadPin="manual">
+            <initializer comment="" name="Initialize">
+                <setting name="DOZE" option="1:8" register="CLKDIV"/>
+                <setting name="DOZEN" option="disabled" register="CLKDIV"/>
+                <setting name="RCDIV" option="FRC/2" register="CLKDIV"/>
+                <setting name="ROI" option="disabled" register="CLKDIV"/>
+                <additionalSetting name="soscEnable" option="OSCCONbits.SOSCEN = 0;"/>
+            </initializer>
+            <setting name="DSWDTPS" option="DSWDTPS1F"/>
+            <setting name="DSSWEN" option="OFF"/>
+            <setting name="DSWDTOSC" option="LPRC"/>
+            <setting name="DSBOREN" option="OFF"/>
+            <setting name="DSWDTEN" option="OFF"/>
+            <setting name="WPDIS" option="WPEN"/>
+            <setting name="WPFP" option="WPFP63"/>
+            <setting name="WPEND" option="WPENDMEM"/>
+            <setting name="VBTBOR" option="OFF"/>
+            <setting name="BOREN" option="OFF"/>
+            <setting name="WPCFG" option="WPCFGDIS"/>
+            <setting name="SOSCSEL" option="OFF"/>
+            <setting name="WDTWIN" option="PS25_0"/>
+            <setting name="POSCMD" option="NONE"/>
+            <setting name="IESO" option="OFF"/>
+            <setting name="IOL1WAY" option="ON"/>
+            <setting name="FNOSC" option="LPRC"/>
+            <setting name="BOREN1" option="EN"/>
+            <setting name="ALTVREF" option="ALT_AV_ALT_CV"/>
+            <setting name="FCKSM" option="CSDCMD"/>
+            <setting name="OSCIOFCN" option="ON"/>
+            <setting name="WDTPS" option="PS32768"/>
+            <setting name="LPCFG" option="OFF"/>
+            <setting name="ICS" option="PGx2"/>
+            <setting name="FWPSA" option="PR128"/>
+            <setting name="WINDIS" option="OFF"/>
+            <setting name="GWRP" option="OFF"/>
+            <setting name="GCP" option="OFF"/>
+            <setting name="FWDTEN" option="WDT_HW"/>
+            <setting name="JTAGEN" option="OFF"/>
+            <setting name="Primary Oscillator" option="3500000"/>
+            <setting name="Secondary Oscillator" option="31000"/>
+            <setting name="generateConfigBits" option="true"/>
+            <file checksum="326510836" modified="false" name="mcc.c" path="mcc_generated_files/mcc.c"/>
+            <file checksum="3276407921" modified="false" name="mcc.h" path="mcc_generated_files/mcc.h"/>
+        </manager>
+    </managers>
+    <modules>
+        <module generated="true" mode="GPIO" name="GPIO" order="0" reloadPin="manual" type="GPIO">
+            <resource customName="LED" digital="true" direction="OUTPUT" function="RF0" ioc="0" module="GPIO" name="RF0" start="false" type="pin" wpu="false"/>
+        </module>
+    </modules>
+</configuration>

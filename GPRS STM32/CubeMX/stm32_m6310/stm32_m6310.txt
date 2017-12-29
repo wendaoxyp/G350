@@ -1,0 +1,41 @@
+Configuration	stm32_m6310
+STM32CubeMX 	4.20.1
+Date	12/25/2017
+MCU	STM32L031C6Tx
+
+
+
+PERIPHERALS	MODES	FUNCTIONS	PINS
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+28	PB15	GPIO_Output	
+
+
+
+SOFTWARE PROJECT
+
+Project Settings : 
+Project Name : stm32_m6310
+Project Folder : C:\Users\Administrator\Desktop\code\GPRS STM32\CubeMX\stm32_m6310
+Toolchain / IDE : EWARM
+Firmware Package Name and Version : STM32Cube FW_L0 V1.9.0
+
+
+Code Generation Settings : 
+STM32Cube Firmware Library Package : Copy all used libraries into the project folder
+Generate peripheral initialization as a pair of '.c/.h' files per peripheral : No
+Backup previously generated files when re-generating : No
+Delete previously generated files when not re-generated : Yes
+Set all free pins as analog (to optimize the power consumption) : No
+
+
+Toolchains Settings : 
+Compiler Optimizations : Balanced Size/Speed
+
+
+
+
+
+

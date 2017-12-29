@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1497079871 source:c:\users\administrator\desktop\codeblock\test udp cop\qrqw\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<stdbool.h>
+

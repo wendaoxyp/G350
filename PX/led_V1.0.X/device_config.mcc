@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration device="PIC24FJ64GA306" mcc_version="v2.25.2">
+    <managers>
+        <manager generated="true" name="Pin Manager" reloadPin="manual">
+            <setting name="package" option="TQFP64"/>
+            <setting name="sorting" option="true"/>
+            <resource customName="LED_R" digital="true" direction="OUTPUT" function="RB13" ioc="0" module="GPIO" name="RB13" start="true" type="pin" wpu="false"/>
+            <resource customName="IN2" digital="true" direction="INPUT" function="RD1" ioc="4" module="GPIO" name="RD1" start="false" type="pin" wpu="false"/>
+            <resource customName="LED_B" digital="true" direction="OUTPUT" function="RD2" ioc="0" module="GPIO" name="RD2" start="true" type="pin" wpu="false"/>
+            <resource customName="IN1" digital="true" direction="INPUT" function="RD5" ioc="4" module="GPIO" name="RD5" start="false" type="pin" wpu="false"/>
+            <resource customName="LED_G" digital="true" direction="OUTPUT" function="RD6" ioc="0" module="GPIO" name="RD6" start="true" type="pin" wpu="false"/>
+            <resource customName="IN3" digital="true" direction="INPUT" function="RF0" ioc="4" module="GPIO" name="RF0" start="false" type="pin" wpu="false"/>
+            <file checksum="2485833830" modified="false" name="pin_manager.c" path="mcc_generated_files/pin_manager.c"/>
+            <file checksum="4226339673" modified="false" name="pin_manager.h" path="mcc_generated_files/pin_manager.h"/>
+        </manager>
+        <manager generated="true" name="System" reloadPin="manual">
+            <initializer comment="" name="Initialize">
+                <setting name="DOZE" option="1:8" register="CLKDIV"/>
+                <setting name="DOZEN" option="disabled" register="CLKDIV"/>
+                <setting name="RCDIV" option="FRC/1" register="CLKDIV"/>
+                <setting name="ROI" option="disabled" register="CLKDIV"/>
+            </initializer>
+            <setting name="DSWDTPS" option="DSWDTPS1F"/>
+            <setting name="DSSWEN" option="OFF"/>
+            <setting name="DSWDTOSC" option="LPRC"/>
+            <setting name="DSBOREN" option="ON"/>
+            <setting name="DSWDTEN" option="ON"/>
+            <setting name="WPDIS" option="WPDIS"/>
+            <setting name="WPFP" option="WPFP63"/>
+            <setting name="WPEND" option="WPENDMEM"/>
+            <setting name="VBTBOR" option="ON"/>
+            <setting name="BOREN" option="ON"/>
+            <setting name="WPCFG" option="WPCFGDIS"/>
+            <setting name="SOSCSEL" option="ON"/>
+            <setting name="WDTWIN" option="PS25_0"/>
+            <setting name="POSCMD" option="NONE"/>
+            <setting name="IESO" option="ON"/>
+            <setting name="IOL1WAY" option="ON"/>
+            <setting name="FNOSC" option="FRCPLL"/>
+            <setting name="BOREN1" option="EN"/>
+            <setting name="ALTVREF" option="ALT_AV_ALT_CV"/>
+            <setting name="FCKSM" option="CSDCMD"/>
+            <setting name="OSCIOFCN" option="ON"/>
+            <setting name="WDTPS" option="PS32768"/>
+            <setting name="LPCFG" option="OFF"/>
+            <setting name="ICS" option="PGx2"/>
+            <setting name="FWPSA" option="PR128"/>
+            <setting name="WINDIS" option="OFF"/>
+            <setting name="GWRP" option="OFF"/>
+            <setting name="GCP" option="OFF"/>
+            <setting name="FWDTEN" option="WDT_DIS"/>
+            <setting name="JTAGEN" option="OFF"/>
+            <setting name="Primary Oscillator" option="3500000"/>
+            <setting name="Secondary Oscillator" option="32768"/>
+            <setting name="generateConfigBits" option="true"/>
+            <file checksum="2519022499" modified="false" name="mcc.c" path="mcc_generated_files/mcc.c"/>
+            <file checksum="1654724061" modified="false" name="mcc.h" path="mcc_generated_files/mcc.h"/>
+        </manager>
+        <manager generated="true" name="Interrupt Manager" reloadPin="manual">
+            <resource name="TI" type="TMR1" value="7"/>
+            <file checksum="3282275353" modified="false" name="interrupt_manager.c" path="mcc_generated_files/interrupt_manager.c"/>
+            <file checksum="1910308886" modified="false" name="interrupt_manager.h" path="mcc_generated_files/interrupt_manager.h"/>
+            <interrupt module="TMR1" name="TI" priority="7"/>
+        </manager>
+    </managers>
+    <modules>
+        <module generated="true" mode="GPIO" name="GPIO" order="0" reloadPin="manual" type="GPIO">
+            <resource customName="IN1" digital="true" direction="INPUT" function="RD5" ioc="4" module="GPIO" name="RD5" start="false" type="pin" wpu="false"/>
+            <resource customName="IN2" digital="true" direction="INPUT" function="RD1" ioc="4" module="GPIO" name="RD1" start="false" type="pin" wpu="false"/>
+            <resource customName="LED_R" digital="true" direction="OUTPUT" function="RB13" ioc="0" module="GPIO" name="RB13" start="true" type="pin" wpu="false"/>
+            <resource customName="LED_B" digital="true" direction="OUTPUT" function="RD2" ioc="0" module="GPIO" name="RD2" start="true" type="pin" wpu="false"/>
+            <resource customName="LED_G" digital="true" direction="OUTPUT" function="RD6" ioc="0" module="GPIO" name="RD6" start="true" type="pin" wpu="false"/>
+            <resource customName="IN3" digital="true" direction="INPUT" function="RF0" ioc="4" module="GPIO" name="RF0" start="false" type="pin" wpu="false"/>
+        </module>
+        <module generated="true" mode="TMR" name="TMR1" order="1" reloadPin="auto" type="tmr_16b">
+            <initializer comment="" name="Initialize">
+                <setting name="TSIDL" option="disabled" register="T1CON"/>
+                <setting name="TGATE" option="disabled" register="T1CON"/>
+                <setting name="TCKPS" option="1:1" register="T1CON"/>
+                <setting name="TSYNC" option="disabled" register="T1CON"/>
+                <setting name="TCS" option="FOSC/2" register="T1CON"/>
+                <setting name="TECS" option="SOSC" register="T1CON"/>
+                <setting name="TON" option="enabled" register="T1CON"/>
+                <setting name="TMR1" option="0" register="TMR1"/>
+                <setting name="PR1" option="16000" register="PR1"/>
+                <additionalSetting name="timerFrequency" option="1.6E7"/>
+                <additionalSetting name="tmrReloadValue" option="0"/>
+                <additionalSetting name="tmrPeriod" option="1.000 ms"/>
+                <additionalSetting name="tickerPeriod" option="1"/>
+                <additionalSetting name="tmrPeriodValue" option="16000"/>
+                <additionalSetting name="tickerInSec" option="1.000 ms"/>
+            </initializer>
+            <setting name="TI" option="true"/>
+            <setting name="tmrUpperHalf" option="0"/>
+            <file checksum="3275809759" modified="true" name="tmr1.c" path="mcc_generated_files/tmr1.c"/>
+            <file checksum="3533971943" modified="false" name="tmr1.h" path="mcc_generated_files/tmr1.h"/>
+        </module>
+    </modules>
+</configuration>

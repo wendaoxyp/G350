@@ -1,0 +1,279 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16LF1527 ]
+[d frameptr 6 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"39 C:\Users\Administrator\Desktop\1527\UART2.X\main.c
+[v _main main `(i  1 e 2 0 ]
+"112 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/eusart1.c
+[v _EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
+"130
+[v _EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
+"155
+[v _EUSART1_Transmit_ISR EUSART1_Transmit_ISR `(v  1 e 1 0 ]
+"169
+[v _EUSART1_Receive_ISR EUSART1_Receive_ISR `(v  1 e 1 0 ]
+"52 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/interrupt_manager.c
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+"69 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"77
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+"50 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"65 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/tmr0.c
+[v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
+"102
+[v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
+"122
+[v _TMR0_CallBack TMR0_CallBack `(v  1 e 1 0 ]
+[s S83 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"358 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic16lf1527.h
+[s S92 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 T0IE 1 0 :1:5 
+]
+[u S97 . 1 `S83 1 . 1 0 `S92 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES97  1 e 1 @11 ]
+[s S151 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSP1IF 1 0 :1:3 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+"740
+[s S160 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+]
+[u S165 . 1 `S151 1 . 1 0 `S160 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES165  1 e 1 @17 ]
+"986
+[v _TMR0 TMR0 `VEuc  1 e 1 @21 ]
+"1303
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1364
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1425
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+"1486
+[v _TRISD TRISD `VEuc  1 e 1 @143 ]
+"1547
+[v _TRISE TRISE `VEuc  1 e 1 @144 ]
+[s S119 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSP1IE 1 0 :1:3 
+`uc 1 TX1IE 1 0 :1:4 
+`uc 1 RC1IE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+"1631
+[s S128 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+]
+[u S133 . 1 `S119 1 . 1 0 `S128 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES133  1 e 1 @145 ]
+"1877
+[v _OPTION_REG OPTION_REG `VEuc  1 e 1 @149 ]
+[s S43 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1900
+[s S50 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S57 . 1 `S43 1 . 1 0 `S50 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES57  1 e 1 @149 ]
+"2073
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"2138
+[v _OSCSTAT OSCSTAT `VEuc  1 e 1 @154 ]
+"2380
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+"2441
+[v _LATB LATB `VEuc  1 e 1 @269 ]
+"2502
+[v _LATC LATC `VEuc  1 e 1 @270 ]
+"2563
+[v _LATD LATD `VEuc  1 e 1 @271 ]
+"2632
+[v _LATE LATE `VEuc  1 e 1 @272 ]
+"2783
+[v _APFCON APFCON `VEuc  1 e 1 @285 ]
+"2808
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"2860
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"2917
+[v _ANSELD ANSELD `VEuc  1 e 1 @399 ]
+"2962
+[v _ANSELE ANSELE `VEuc  1 e 1 @400 ]
+"3163
+[v _RC1REG RC1REG `VEuc  1 e 1 @409 ]
+"3216
+[v _TX1REG TX1REG `VEuc  1 e 1 @410 ]
+"3275
+[v _SP1BRGL SP1BRGL `VEuc  1 e 1 @411 ]
+"3344
+[v _SP1BRGH SP1BRGH `VEuc  1 e 1 @412 ]
+"3397
+[v _RC1STA RC1STA `VEuc  1 e 1 @413 ]
+[s S327 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"3423
+[u S336 . 1 `S327 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES336  1 e 1 @413 ]
+"3576
+[v _TX1STA TX1STA `VEuc  1 e 1 @414 ]
+"3755
+[v _BAUD1CON BAUD1CON `VEuc  1 e 1 @415 ]
+"3904
+[v _WPUB WPUB `VEuc  1 e 1 @525 ]
+"3973
+[v _WPUD WPUD `VEuc  1 e 1 @527 ]
+"4034
+[v _WPUE WPUE `VEuc  1 e 1 @528 ]
+"5630
+[v _TRISF TRISF `VEuc  1 e 1 @780 ]
+"5691
+[v _TRISG TRISG `VEuc  1 e 1 @781 ]
+"6055
+[v _LATF LATF `VEuc  1 e 1 @908 ]
+"6116
+[v _LATG LATG `VEuc  1 e 1 @909 ]
+"6366
+[v _ANSELF ANSELF `VEuc  1 e 1 @1036 ]
+"6427
+[v _ANSELG ANSELG `VEuc  1 e 1 @1037 ]
+"7061
+[v _WPUG WPUG `VEuc  1 e 1 @1165 ]
+"9028
+[v _LATD5 LATD5 `VEb  1 e 0 @2173 ]
+"9030
+[v _LATD6 LATD6 `VEb  1 e 0 @2174 ]
+"9114
+[v _RB1 RB1 `VEb  1 e 0 @105 ]
+"9480
+[v _TRISB1 TRISB1 `VEb  1 e 0 @1129 ]
+"9520
+[v _TRISD5 TRISD5 `VEb  1 e 0 @1149 ]
+"9522
+[v _TRISD6 TRISD6 `VEb  1 e 0 @1150 ]
+"9524
+[v _TRISD7 TRISD7 `VEb  1 e 0 @1151 ]
+"62 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/eusart1.c
+[v _eusart1TxHead eusart1TxHead `uc  1 s 1 eusart1TxHead ]
+"63
+[v _eusart1TxTail eusart1TxTail `uc  1 s 1 eusart1TxTail ]
+"64
+[v _eusart1TxBuffer eusart1TxBuffer `[8]uc  1 s 8 eusart1TxBuffer ]
+"65
+[v _eusart1TxBufferRemaining eusart1TxBufferRemaining `VEuc  1 e 1 0 ]
+"67
+[v _eusart1RxHead eusart1RxHead `uc  1 s 1 eusart1RxHead ]
+"68
+[v _eusart1RxTail eusart1RxTail `uc  1 s 1 eusart1RxTail ]
+"69
+[v _eusart1RxBuffer eusart1RxBuffer `[8]uc  1 s 8 eusart1RxBuffer ]
+"70
+[v _eusart1RxCount eusart1RxCount `VEuc  1 e 1 0 ]
+"58 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/tmr0.c
+[v _timer0ReloadVal timer0ReloadVal `VEuc  1 e 1 0 ]
+"59
+[v _Flag_Time1 Flag_Time1 `VEuc  1 e 1 0 ]
+"39 C:\Users\Administrator\Desktop\1527\UART2.X\main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"70
+} 0
+"69 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"75
+} 0
+"65 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/tmr0.c
+[v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
+{
+"82
+} 0
+"50 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"87
+} 0
+"77 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/mcc.c
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+{
+"84
+} 0
+"130 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/eusart1.c
+[v _EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
+{
+[v EUSART1_Write@txData txData `uc  1 a 1 wreg ]
+[v EUSART1_Write@txData txData `uc  1 a 1 wreg ]
+[v EUSART1_Write@txData txData `uc  1 a 1 3 ]
+"145
+} 0
+"52 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/interrupt_manager.c
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+{
+"63
+} 0
+"102 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/tmr0.c
+[v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
+{
+"103
+[v TMR0_ISR@CountCallBack CountCallBack `VEui  1 s 2 CountCallBack ]
+"120
+} 0
+"122
+[v _TMR0_CallBack TMR0_CallBack `(v  1 e 1 0 ]
+{
+"126
+} 0
+"155 C:\Users\Administrator\Desktop\1527\UART2.X\mcc_generated_files/eusart1.c
+[v _EUSART1_Transmit_ISR EUSART1_Transmit_ISR `(v  1 e 1 0 ]
+{
+"167
+} 0
+"169
+[v _EUSART1_Receive_ISR EUSART1_Receive_ISR `(v  1 e 1 0 ]
+{
+"183
+} 0

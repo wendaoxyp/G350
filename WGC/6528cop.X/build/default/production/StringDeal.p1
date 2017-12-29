@@ -1,0 +1,298 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"10 StringDeal.h
+[s S2 `*uc 1 `uc 1 `*uc 1 `uc 1 `uc 1 ]
+[n S2 StringCmpResult inputstring inputlgt cmpstring cmplgt cmpPzt ]
+"22
+[v _CmpString `(uc ~T0 @X0 0 ef1`*S2 ]
+"20
+[v _FindStringHead `(uc ~T0 @X0 0 ef1`*S2 ]
+[v F93 `(uc ~T0 @X0 0 tf ]
+[; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stdarg.h: 7: typedef void * va_list[1];
+[; ;stdarg.h: 10: extern void * __va_start(void);
+[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
+[; ;stdio.h: 43: struct __prbuf
+[; ;stdio.h: 44: {
+[; ;stdio.h: 45: char * ptr;
+[; ;stdio.h: 46: void (* func)(char);
+[; ;stdio.h: 47: };
+[; ;errno.h: 29: extern int errno;
+[; ;conio.h: 12: extern void init_uart(void);
+[; ;conio.h: 14: extern char getch(void);
+[; ;conio.h: 15: extern char getche(void);
+[; ;conio.h: 16: extern void putch(char);
+[; ;conio.h: 17: extern void ungetch(char);
+[; ;conio.h: 19: extern __bit kbhit(void);
+[; ;conio.h: 23: extern char * cgets(char *);
+[; ;conio.h: 24: extern void cputs(const char *);
+[; ;stdio.h: 88: extern int cprintf(char *, ...);
+[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+[; ;stdio.h: 183: extern char * gets(char *);
+[; ;stdio.h: 184: extern int puts(const char *);
+[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
+[; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;StringDeal.h: 8: typedef uint8_t(*pFun)(void);
+[; ;StringDeal.h: 10: struct StringCmpResult {
+[; ;StringDeal.h: 11: uint8_t* inputstring;
+[; ;StringDeal.h: 12: uint8_t inputlgt;
+[; ;StringDeal.h: 13: uint8_t* cmpstring;
+[; ;StringDeal.h: 14: uint8_t cmplgt;
+[; ;StringDeal.h: 15: uint8_t cmpPzt;
+[; ;StringDeal.h: 17: };
+[; ;StringDeal.h: 18: extern struct StringCmpResult ATString;
+[; ;StringDeal.h: 20: bool FindStringHead(struct StringCmpResult* scr_input);
+[; ;StringDeal.h: 22: bool CmpString(struct StringCmpResult* scr_input);
+[; ;StringDeal.h: 23: void StringCmpInit(struct StringCmpResult* scr_input);
+[; ;StringDeal.h: 24: bool RecIsRight(struct StringCmpResult*scr) ;
+[; ;StringDeal.h: 25: void GetBuffer(uint8_t* str1, uint8_t bytes,pFun uart_rec) ;
+[; ;StringDeal.h: 26: void StringCmpInit(struct StringCmpResult* scr_input);
+"3 StringDeal.c
+[v _ATString `S2 ~T0 @X0 1 e ]
+[; ;StringDeal.c: 3: struct StringCmpResult ATString;
+"5
+[v _RecIsRight `(uc ~T0 @X0 1 ef1`*S2 ]
+{
+[; ;StringDeal.c: 5: bool RecIsRight(struct StringCmpResult*scr) {
+[e :U _RecIsRight ]
+[v _scr `*S2 ~T0 @X0 1 r1 ]
+[f ]
+[; ;StringDeal.c: 7: scr->cmpPzt = 0;
+"7
+[e = . *U _scr 4 -> -> 0 `i `uc ]
+[; ;StringDeal.c: 8: while (FindStringHead(scr)) {
+"8
+[e $U 4  ]
+[e :U 5 ]
+{
+[; ;StringDeal.c: 9: if (CmpString(scr))
+"9
+[e $ ! != -> ( _CmpString (1 _scr `i -> -> -> 0 `i `uc `i 7  ]
+[; ;StringDeal.c: 10: return 1;
+"10
+[e ) -> -> 1 `i `uc ]
+[e $UE 3  ]
+[e :U 7 ]
+"11
+}
+[e :U 4 ]
+"8
+[e $ != -> ( _FindStringHead (1 _scr `i -> -> -> 0 `i `uc `i 5  ]
+[e :U 6 ]
+[; ;StringDeal.c: 11: }
+[; ;StringDeal.c: 12: return 0;
+"12
+[e ) -> -> 0 `i `uc ]
+[e $UE 3  ]
+[; ;StringDeal.c: 13: }
+"13
+[e :UE 3 ]
+}
+"15
+[v _GetBuffer `(v ~T0 @X0 1 ef3`*uc`uc`*F93 ]
+{
+[; ;StringDeal.c: 15: void GetBuffer(uint8_t* str1, uint8_t bytes,pFun uart_rec) {
+[e :U _GetBuffer ]
+[v _str1 `*uc ~T0 @X0 1 r1 ]
+[v _bytes `uc ~T0 @X0 1 r2 ]
+[v _uart_rec `*F93 ~T0 @X0 1 r3 ]
+[f ]
+"16
+[v _cnt `uc ~T0 @X0 1 a ]
+[; ;StringDeal.c: 16: uint8_t cnt;
+[; ;StringDeal.c: 17: for (cnt = 0; cnt < bytes; cnt++) {
+"17
+{
+[e = _cnt -> -> 0 `i `uc ]
+[e $U 12  ]
+[e :U 9 ]
+{
+[; ;StringDeal.c: 18: *(str1 + cnt) = uart_rec();
+"18
+[e = *U + _str1 * -> _cnt `ux -> -> # *U _str1 `ui `ux ( *U _uart_rec ..  ]
+[; ;StringDeal.c: 19: if (!(*(str1 + cnt)))
+"19
+[e $ ! ! != -> *U + _str1 * -> _cnt `ux -> -> # *U _str1 `ui `ux `i -> -> -> 0 `i `uc `i 13  ]
+[; ;StringDeal.c: 20: break;
+"20
+[e $U 10  ]
+[e :U 13 ]
+"21
+}
+"17
+[e ++ _cnt -> -> 1 `i `uc ]
+[e :U 12 ]
+[e $ < -> _cnt `i -> _bytes `i 9  ]
+[e :U 10 ]
+"21
+}
+[; ;StringDeal.c: 21: }
+[; ;StringDeal.c: 22: }
+"22
+[e :UE 8 ]
+}
+"24
+[v _StringCmpInit `(v ~T0 @X0 1 ef1`*S2 ]
+{
+[; ;StringDeal.c: 24: void StringCmpInit(struct StringCmpResult* scr_input) {
+[e :U _StringCmpInit ]
+[v _scr_input `*S2 ~T0 @X0 1 r1 ]
+[f ]
+[; ;StringDeal.c: 25: scr_input->cmpstring = (0);
+"25
+[e = . *U _scr_input 2 -> -> 0 `i `*uc ]
+[; ;StringDeal.c: 26: scr_input->inputlgt = 0;
+"26
+[e = . *U _scr_input 1 -> -> 0 `i `uc ]
+[; ;StringDeal.c: 27: scr_input->cmpstring = (0);
+"27
+[e = . *U _scr_input 2 -> -> 0 `i `*uc ]
+[; ;StringDeal.c: 28: scr_input->cmplgt = 0;
+"28
+[e = . *U _scr_input 3 -> -> 0 `i `uc ]
+[; ;StringDeal.c: 29: scr_input->cmpPzt = 0;
+"29
+[e = . *U _scr_input 4 -> -> 0 `i `uc ]
+[; ;StringDeal.c: 31: }
+"31
+[e :UE 14 ]
+}
+"33
+[v _FindStringHead `(uc ~T0 @X0 1 ef1`*S2 ]
+{
+[; ;StringDeal.c: 33: bool FindStringHead(struct StringCmpResult* scr_input) {
+[e :U _FindStringHead ]
+[v _scr_input `*S2 ~T0 @X0 1 r1 ]
+[f ]
+"34
+[v _postion `uc ~T0 @X0 1 a ]
+[; ;StringDeal.c: 34: uint8_t postion;
+[; ;StringDeal.c: 35: for (postion = scr_input->cmpPzt; postion < scr_input->inputlgt; postion++) {
+"35
+{
+[e = _postion . *U _scr_input 4 ]
+[e $U 19  ]
+[e :U 16 ]
+{
+[; ;StringDeal.c: 36: if (*(scr_input->inputstring + postion) == *scr_input->cmpstring) {
+"36
+[e $ ! == -> *U + . *U _scr_input 0 * -> _postion `ux -> -> # *U . *U _scr_input 0 `ui `ux `i -> *U . *U _scr_input 2 `i 20  ]
+{
+[; ;StringDeal.c: 37: scr_input->cmpPzt = postion;
+"37
+[e = . *U _scr_input 4 _postion ]
+[; ;StringDeal.c: 38: return 1;
+"38
+[e ) -> -> 1 `i `uc ]
+[e $UE 15  ]
+"39
+}
+[e :U 20 ]
+"40
+}
+"35
+[e ++ _postion -> -> 1 `i `uc ]
+[e :U 19 ]
+[e $ < -> _postion `i -> . *U _scr_input 1 `i 16  ]
+[e :U 17 ]
+"40
+}
+[; ;StringDeal.c: 39: }
+[; ;StringDeal.c: 40: }
+[; ;StringDeal.c: 41: return 0;
+"41
+[e ) -> -> 0 `i `uc ]
+[e $UE 15  ]
+[; ;StringDeal.c: 42: }
+"42
+[e :UE 15 ]
+}
+"44
+[v _CmpString `(uc ~T0 @X0 1 ef1`*S2 ]
+{
+[; ;StringDeal.c: 44: bool CmpString(struct StringCmpResult* scr_input) {
+[e :U _CmpString ]
+[v _scr_input `*S2 ~T0 @X0 1 r1 ]
+[f ]
+"45
+[v _cnt `uc ~T0 @X0 1 a ]
+[; ;StringDeal.c: 45: uint8_t cnt;
+[; ;StringDeal.c: 46: for (cnt = 0; cnt < scr_input->cmplgt; cnt++) {
+"46
+{
+[e = _cnt -> -> 0 `i `uc ]
+[e $U 25  ]
+[e :U 22 ]
+{
+[; ;StringDeal.c: 47: if (*(scr_input->cmpstring + cnt) != *(scr_input->inputstring + cnt + scr_input->cmpPzt))
+"47
+[e $ ! != -> *U + . *U _scr_input 2 * -> _cnt `ux -> -> # *U . *U _scr_input 2 `ui `ux `i -> *U + + . *U _scr_input 0 * -> _cnt `ux -> -> # *U . *U _scr_input 0 `ui `ux * -> . *U _scr_input 4 `ux -> -> # *U + . *U _scr_input 0 * -> _cnt `ux -> -> # *U . *U _scr_input 0 `ui `ux `ui `ux `i 26  ]
+[; ;StringDeal.c: 48: break;
+"48
+[e $U 23  ]
+[e $U 27  ]
+"49
+[e :U 26 ]
+[; ;StringDeal.c: 49: else if (cnt == scr_input->cmplgt - 1)
+[e $ ! == -> _cnt `i - -> . *U _scr_input 3 `i -> 1 `i 28  ]
+[; ;StringDeal.c: 50: return 1;
+"50
+[e ) -> -> 1 `i `uc ]
+[e $UE 21  ]
+[e :U 28 ]
+"51
+[e :U 27 ]
+}
+"46
+[e ++ _cnt -> -> 1 `i `uc ]
+[e :U 25 ]
+[e $ < -> _cnt `i -> . *U _scr_input 3 `i 22  ]
+[e :U 23 ]
+"51
+}
+[; ;StringDeal.c: 51: }
+[; ;StringDeal.c: 52: scr_input->cmpPzt += 1;
+"52
+[e =+ . *U _scr_input 4 -> -> 1 `i `uc ]
+[; ;StringDeal.c: 53: return 0;
+"53
+[e ) -> -> 0 `i `uc ]
+[e $UE 21  ]
+[; ;StringDeal.c: 54: }
+"54
+[e :UE 21 ]
+}

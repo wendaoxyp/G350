@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration device="PIC24FJ64GA306" mcc_version="v2.25.2">
+    <managers>
+        <manager generated="true" name="Pin Manager" reloadPin="manual">
+            <setting name="package" option="TQFP64"/>
+            <setting name="sorting" option="true"/>
+            <resource customName="SCL1" digital="true" direction="BIDIRECTIONAL" function="SCL1" ioc="0" module="I2C1" name="RG2" start="false" type="pin" wpu="false"/>
+            <resource customName="SDA1" digital="true" direction="BIDIRECTIONAL" function="SDA1" ioc="0" module="I2C1" name="RG3" start="false" type="pin" wpu="false"/>
+            <file checksum="4009676819" modified="false" name="pin_manager.c" path="mcc_generated_files/pin_manager.c"/>
+            <file checksum="2788671195" modified="false" name="pin_manager.h" path="mcc_generated_files/pin_manager.h"/>
+        </manager>
+        <manager generated="true" name="Interrupt Manager" reloadPin="manual">
+            <resource name="MICI" type="I2C1" value="1"/>
+            <interrupt module="I2C1" name="MICI" priority="1"/>
+            <file checksum="934711778" modified="false" name="interrupt_manager.c" path="mcc_generated_files/interrupt_manager.c"/>
+            <file checksum="1910308886" modified="false" name="interrupt_manager.h" path="mcc_generated_files/interrupt_manager.h"/>
+        </manager>
+        <manager generated="true" name="System" reloadPin="manual">
+            <initializer comment="" name="Initialize">
+                <setting name="DOZE" option="1:8" register="CLKDIV"/>
+                <setting name="DOZEN" option="disabled" register="CLKDIV"/>
+                <setting name="RCDIV" option="FRC/2" register="CLKDIV"/>
+                <setting name="ROI" option="disabled" register="CLKDIV"/>
+            </initializer>
+            <setting name="DSWDTPS" option="DSWDTPS1F"/>
+            <setting name="DSSWEN" option="ON"/>
+            <setting name="DSWDTOSC" option="LPRC"/>
+            <setting name="DSBOREN" option="ON"/>
+            <setting name="DSWDTEN" option="ON"/>
+            <setting name="WPDIS" option="WPDIS"/>
+            <setting name="WPFP" option="WPFP63"/>
+            <setting name="WPEND" option="WPENDMEM"/>
+            <setting name="VBTBOR" option="ON"/>
+            <setting name="BOREN" option="ON"/>
+            <setting name="WPCFG" option="WPCFGDIS"/>
+            <setting name="SOSCSEL" option="ON"/>
+            <setting name="WDTWIN" option="PS25_0"/>
+            <setting name="POSCMD" option="EC"/>
+            <setting name="IESO" option="ON"/>
+            <setting name="IOL1WAY" option="ON"/>
+            <setting name="FNOSC" option="PRIPLL"/>
+            <setting name="BOREN1" option="EN"/>
+            <setting name="ALTVREF" option="ALT_AV_ALT_CV"/>
+            <setting name="FCKSM" option="CSDCMD"/>
+            <setting name="OSCIOFCN" option="OFF"/>
+            <setting name="WDTPS" option="PS32768"/>
+            <setting name="LPCFG" option="OFF"/>
+            <setting name="ICS" option="PGx2"/>
+            <setting name="FWPSA" option="PR128"/>
+            <setting name="WINDIS" option="OFF"/>
+            <setting name="GWRP" option="OFF"/>
+            <setting name="GCP" option="OFF"/>
+            <setting name="FWDTEN" option="WDT_DIS"/>
+            <setting name="JTAGEN" option="OFF"/>
+            <setting name="Primary Oscillator" option="8000000"/>
+            <setting name="Secondary Oscillator" option="32768"/>
+            <setting name="generateConfigBits" option="true"/>
+            <file checksum="3821748253" modified="false" name="mcc.c" path="mcc_generated_files/mcc.c"/>
+            <file checksum="2684622216" modified="false" name="mcc.h" path="mcc_generated_files/mcc.h"/>
+        </manager>
+    </managers>
+    <modules>
+        <module generated="true" mode="I2C Master" name="I2C1" order="0" reloadPin="auto" type="i2c">
+            <initializer comment="" name="Initialize">
+                <setting name="I2CRCV" option="0x0" register="I2C1RCV"/>
+                <setting name="I2CTRN" option="0xFF" register="I2C1TRN"/>
+                <setting name="I2CBRG" option="2" register="I2C1BRG"/>
+                <setting name="RCEN" option="disabled" register="I2C1CON"/>
+                <setting name="A10M" option="7 Bit" register="I2C1CON"/>
+                <setting name="RSEN" option="disabled" register="I2C1CON"/>
+                <setting name="ACKEN" option="disabled" register="I2C1CON"/>
+                <setting name="DISSLW" option="enabled" register="I2C1CON"/>
+                <setting name="SCLREL" option="Holds" register="I2C1CON"/>
+                <setting name="SEN" option="disabled" register="I2C1CON"/>
+                <setting name="ACKDT" option="Sends ACK" register="I2C1CON"/>
+                <setting name="GCEN" option="disabled" register="I2C1CON"/>
+                <setting name="SMEN" option="disabled" register="I2C1CON"/>
+                <setting name="PEN" option="disabled" register="I2C1CON"/>
+                <setting name="I2CEN" option="enabled" register="I2C1CON"/>
+                <setting name="I2CSIDL" option="disabled" register="I2C1CON"/>
+                <setting name="STREN" option="disabled" register="I2C1CON"/>
+                <setting name="IPMIEN" option="disabled" register="I2C1CON"/>
+                <setting name="IWCOL" option="disabled" register="I2C1STAT"/>
+                <setting name="P" option="disabled" register="I2C1STAT"/>
+                <setting name="S" option="disabled" register="I2C1STAT"/>
+                <setting name="I2COV" option="disabled" register="I2C1STAT"/>
+                <setting name="BCL" option="disabled" register="I2C1STAT"/>
+                <setting name="I2CADD" option="0x0" register="I2C1ADD"/>
+                <setting name="AMSK" option="0x0" register="I2C1MSK"/>
+                <additionalSetting name="dividerChanged" option="0x2"/>
+                <additionalSetting name="clockFrequencyChanged" option="3478261.0"/>
+            </initializer>
+            <file checksum="685879835" modified="false" name="i2c1.c" path="mcc_generated_files/i2c1.c"/>
+            <file checksum="2712605428" modified="false" name="i2c1.h" path="mcc_generated_files/i2c1.h"/>
+        </module>
+    </modules>
+</configuration>

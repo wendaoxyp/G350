@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<root>
+    2016.12.24
+    1、将FROM电压接在3.5V上
+    2、添加硬件AD采集，加压监测时间在GPRS上线前4s
+    3、将脉冲输入的电压也加3.5v上，避免电池电压不够的时候，脉冲错误读取
+</root>

@@ -1,0 +1,24 @@
+--cpu Cortex-M0+
+"stm32_m6310\main.o"
+"stm32_m6310\stm32l0xx_it.o"
+"stm32_m6310\stm32l0xx_hal_msp.o"
+"stm32_m6310\stm32l0xx_hal_i2c.o"
+"stm32_m6310\stm32l0xx_hal_gpio.o"
+"stm32_m6310\stm32l0xx_hal_rcc.o"
+"stm32_m6310\stm32l0xx_hal_rcc_ex.o"
+"stm32_m6310\stm32l0xx_hal_cortex.o"
+"stm32_m6310\stm32l0xx_hal_pwr_ex.o"
+"stm32_m6310\stm32l0xx_hal_flash_ramfunc.o"
+"stm32_m6310\stm32l0xx_hal_dma.o"
+"stm32_m6310\stm32l0xx_hal.o"
+"stm32_m6310\stm32l0xx_hal_flash_ex.o"
+"stm32_m6310\stm32l0xx_hal_flash.o"
+"stm32_m6310\stm32l0xx_hal_pwr.o"
+"stm32_m6310\stm32l0xx_hal_i2c_ex.o"
+"stm32_m6310\startup_stm32l031xx.o"
+"stm32_m6310\system_stm32l0xx.o"
+--library_type=microlib --strict --scatter "stm32_m6310\stm32_m6310.sct"
+
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "stm32_m6310.map" -o stm32_m6310\stm32_m6310.axf

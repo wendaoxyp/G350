@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration device="PIC24FJ64GA306" mcc_version="v2.25.2">
+    <managers>
+        <manager generated="true" name="Pin Manager" reloadPin="manual">
+            <setting name="package" option="TQFP64"/>
+            <setting name="sorting" option="true"/>
+            <file checksum="4009676819" modified="false" name="pin_manager.c" path="mcc_generated_files/pin_manager.c"/>
+            <file checksum="1849309624" modified="false" name="pin_manager.h" path="mcc_generated_files/pin_manager.h"/>
+        </manager>
+        <manager generated="true" name="System" reloadPin="manual">
+            <initializer comment="" name="Initialize">
+                <setting name="DOZE" option="1:8" register="CLKDIV"/>
+                <setting name="DOZEN" option="disabled" register="CLKDIV"/>
+                <setting name="RCDIV" option="FRC/1" register="CLKDIV"/>
+                <setting name="ROI" option="disabled" register="CLKDIV"/>
+                <additionalSetting name="soscEnable" option="OSCCONbits.SOSCEN = 1;"/>
+            </initializer>
+            <setting name="DSWDTPS" option="DSWDTPS1F"/>
+            <setting name="DSSWEN" option="OFF"/>
+            <setting name="DSWDTOSC" option="LPRC"/>
+            <setting name="DSBOREN" option="OFF"/>
+            <setting name="DSWDTEN" option="OFF"/>
+            <setting name="WPDIS" option="WPDIS"/>
+            <setting name="WPFP" option="WPFP63"/>
+            <setting name="WPEND" option="WPENDMEM"/>
+            <setting name="VBTBOR" option="ON"/>
+            <setting name="BOREN" option="ON"/>
+            <setting name="WPCFG" option="WPCFGDIS"/>
+            <setting name="SOSCSEL" option="ON"/>
+            <setting name="WDTWIN" option="PS25_0"/>
+            <setting name="POSCMD" option="EC"/>
+            <setting name="IESO" option="ON"/>
+            <setting name="IOL1WAY" option="ON"/>
+            <setting name="FNOSC" option="PRIPLL"/>
+            <setting name="BOREN1" option="EN"/>
+            <setting name="ALTVREF" option="ALT_AV_ALT_CV"/>
+            <setting name="FCKSM" option="CSECME"/>
+            <setting name="OSCIOFCN" option="ON"/>
+            <setting name="WDTPS" option="PS32768"/>
+            <setting name="LPCFG" option="OFF"/>
+            <setting name="ICS" option="PGx2"/>
+            <setting name="FWPSA" option="PR128"/>
+            <setting name="WINDIS" option="OFF"/>
+            <setting name="GWRP" option="OFF"/>
+            <setting name="GCP" option="OFF"/>
+            <setting name="FWDTEN" option="WDT_DIS"/>
+            <setting name="JTAGEN" option="OFF"/>
+            <setting name="Primary Oscillator" option="8000000"/>
+            <setting name="Secondary Oscillator" option="32768"/>
+            <setting name="generateConfigBits" option="true"/>
+            <file checksum="2869573995" modified="false" name="mcc.c" path="mcc_generated_files/mcc.c"/>
+            <file checksum="1086981378" modified="false" name="mcc.h" path="mcc_generated_files/mcc.h"/>
+        </manager>
+    </managers>
+    <modules/>
+</configuration>

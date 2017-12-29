@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1508195737 source:c:\users\administrator\desktop\codeblock\test define\calcalarm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<time.h>
+	<stdbool.h>
+
