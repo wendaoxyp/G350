@@ -50,6 +50,8 @@
 #include <stdbool.h>
 #include "interrupt_manager.h"
 #include "tmr1.h"
+#include "I2C_EERAMDrivers/i2c_eeram_app"
+#include "i2c1_driver.h"
 
 #define _XTAL_FREQ  8000000UL
 

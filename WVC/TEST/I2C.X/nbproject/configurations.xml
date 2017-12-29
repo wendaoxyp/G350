@@ -9,6 +9,8 @@
         <itemPath>mcc_generated_files/pin_manager.h</itemPath>
         <itemPath>mcc_generated_files/interrupt_manager.h</itemPath>
         <itemPath>mcc_generated_files/tmr1.h</itemPath>
+        <itemPath>mcc_generated_files/I2C_EERAMDrivers/i2c_eeram_app.h</itemPath>
+        <itemPath>mcc_generated_files/i2c1_driver.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
@@ -19,6 +21,8 @@
         <itemPath>mcc_generated_files/pin_manager.c</itemPath>
         <itemPath>mcc_generated_files/interrupt_manager.c</itemPath>
         <itemPath>mcc_generated_files/tmr1.c</itemPath>
+        <itemPath>mcc_generated_files/I2C_EERAMDrivers/i2c_eeram_app.c</itemPath>
+        <itemPath>mcc_generated_files/i2c1_driver.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
     </logicalFolder>
@@ -178,6 +182,7 @@
         <property key="CRC" value="true"/>
         <property key="CTMU" value="true"/>
         <property key="DMA" value="true"/>
+        <property key="Freeze All Other Peripherals" value="true"/>
         <property key="I2C 1" value="true"/>
         <property key="I2C 2" value="true"/>
         <property key="INPUT CAPTURE 1" value="true"/>
@@ -198,6 +203,7 @@
         <property key="SPI 1" value="true"/>
         <property key="SPI 2" value="true"/>
         <property key="SPI 3" value="true"/>
+        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
         <property key="TIMER 1" value="true"/>
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
@@ -237,8 +243,6 @@
         <property key="programoptions.usehighvoltageonmclr" value="false"/>
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
-        <property key="冻结所有其他外设" value="true"/>
-        <property key="安全段。分部编程" value="FullChipProgramming"/>
       </PICkit3PlatformTool>
     </conf>
   </confs>

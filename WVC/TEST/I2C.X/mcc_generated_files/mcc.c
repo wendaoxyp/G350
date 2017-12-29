@@ -89,15 +89,15 @@
 #pragma config ALTCMPI = DISABLE    // Alternate Comparator Input Enable bit->C1INC, C2INC, and C3INC are on their standard pin locations
 #pragma config TMPRPIN = OFF    // Tamper Pin Enable bit->TMPRN pin function is disabled
 #pragma config SOSCHP = ON    // SOSC High Power Enable bit (valid only when SOSCSEL = 1->Enable SOSC high power mode (default)
-#pragma config ALTI2C1 = ALTI2CEN    // Alternate I2C pin Location->SDA1 and SCL1 on RB9 and RB8
+#pragma config ALTI2C1 = ALTI2CDIS    // Alternate I2C pin Location->SDA1 and SCL1 on RB9 and RB8
 
 #include "mcc.h"
 
 void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
-    OSCILLATOR_Initialize();
     INTERRUPT_Initialize();
+    OSCILLATOR_Initialize();
     TMR1_Initialize();
 }
 
