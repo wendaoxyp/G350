@@ -9,81 +9,40 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "CAT24C512.h"
 #include "mcc_generated_files/mcc.h"
-#include "I2C_S.h"
+//#include "I2C_S.h"
 //#define LED_G LATBbits.LATB12
 #define FCY 8000000UL
-
+uint8_t tmp_test[50], cnt;
+#define TEST_Read_Byte 0
+#define TEST_Write_Byte 0
 /*
  * CAT24C512 64K
  */
 int main(void) {
     SYSTEM_Initialize();
-    uint8_t I2C_Test_tmp = 0xf0, cnt = 0;
-    //    return (EXIT_SUCCESS);
-    TRISBbits.TRISB4 = 0;
-    LATBbits.LATB4 = 0; //wp=0
     I2C_Init();
-    //I2C write 0x0000 0xaa
-    Delay1ms(1);
-    I2C_Start();
-    I2C_WriteICAdd(I2C_TEST_ADD, I2C_WRITE);
-    if (I2C_ACK() == I2C_ERR_NO_ACK)
-        Nop(); // continue; //send ERR
-    I2C_WriteOpretAdd(0x00); //高位地址
-    if (I2C_ACK() == I2C_ERR_NO_ACK)
-        Nop(); //continue; //send ERR
-    I2C_WriteOpretAdd(0x01); //低位地址
-    if (I2C_ACK() == I2C_ERR_NO_ACK)
-        Nop(); //continue; //send ERR
-    I2C_WriteData(0xaa); //写0xaa数据
-    if (I2C_ACK() == I2C_ERR_NO_ACK)
-        Nop(); // continue; //send ERR
-    I2C_Stop();
-    //    LATBbits.LATB4 = 1; //wp=1
-    //i2c write end
-    Nop();
+    CAT24_Init();
+
+    for (cnt = 0; cnt < sizeof (tmp_test); cnt++)
+        tmp_test[cnt] = cnt;
+#if TEST_Write_Byte
+    CAT24_Write_Byte(0x1000, 0x0f);
+#else
+    CAT24_Write_Page(0x1000, tmp_test, 50);
+#endif
+
+
     while (1) {
-        //I2C read start
+        for (cnt = 0; cnt < sizeof (tmp_test); cnt++)
+            tmp_test[cnt] = cnt + 1;
+#if TEST_Read_Byte
+        CAT24_Read_Byte(0x1000, &tmp_test);
+#else
+        CAT24_Read_Page(0x1000, tmp_test, 50);
+#endif
         Nop();
-        //        LATBbits.LATB4 = 0; //wp=0
-        Delay1ms(1);
-        I2C_Start();
-        cnt = 1;
-        cnt += 1;
-        I2C_WriteICAdd(I2C_TEST_ADD, I2C_WRITE);
-        cnt += 1;
-        if (I2C_ACK() == I2C_ERR_NO_ACK)
-            continue; //send ERR
-        cnt += 1;
-        I2C_WriteOpretAdd(0x00); //高位地址
-        cnt += 1;
-        if (I2C_ACK() == I2C_ERR_NO_ACK)
-            continue; //send ERR
-        cnt += 1;
-        I2C_WriteOpretAdd(0x00); //低位地址
-        cnt += 1;
-        if (I2C_ACK() == I2C_ERR_NO_ACK)
-            continue; //send ERR
-        cnt += 1;
-        I2C_Start(); //restatt
-        cnt += 1;
-        I2C_WriteICAdd(I2C_TEST_ADD, /*I2C_WRITE); //*/ I2C_READ); //读取
-        cnt += 1; //10
-        if (I2C_ACK() == I2C_ERR_NO_ACK)
-            continue; //send ERR
-        cnt += 1;
-        I2C_Test_tmp = I2C_ReadData(); //
-        cnt += 1;
-        I2C_NACK();
-        cnt += 1;
-        I2C_Stop();
-        cnt += 1;
-        //        cnt+=1;
-        //i2C read end 
-        Nop();
-        Delay100ms(1);
-        //        LATBbits.LATB4 = 1; //wp=1
     }
 }
 

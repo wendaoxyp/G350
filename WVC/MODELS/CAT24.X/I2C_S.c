@@ -1,7 +1,5 @@
 #include "I2C_S.h"
 
-
-
 /*************************************
 Function: I2C_Init 
 Description: 初始化I2C的IO
@@ -15,8 +13,6 @@ void I2C_Init(void) {
     I2C_SDA = 1; //SDA置高
     I2C_DELAY(1);
 }
-
-
 
 /*************************************
 Function: I2C_Start 
@@ -34,6 +30,7 @@ void I2C_Start(void) {
     I2C_SCL = 0; //释放总线
     I2C_DELAY(1);
 }
+
 /*************************************
 Function: I2C_Stop 
 Description: I2C停止函数
@@ -48,6 +45,7 @@ void I2C_Stop(void) {
     I2C_SDA = 1; //数据置高
     I2C_DELAY(1);
 }
+
 /*************************************
 Function: I2C_WriteICAdd 
 Description: I2C写IC地址
@@ -65,8 +63,10 @@ void I2C_WriteICAdd(const uint8_t add, const uint8_t opreation) {
         I2C_SCL = 0;
         if (!cnt && I2C_SDA)//如果最后位发送1，将SDA=0,避免I2C协议通讯失败
             I2C_SDA = 0;
+        I2C_DELAY(1);
     }
 }
+
 /*************************************
 Function: FloatToChar 
 Description: 浮点数转化为char数组
@@ -82,11 +82,12 @@ void I2C_WriteOpretAdd(uint8_t add) {
         I2C_SCL = 1; //握手总线
         I2C_DELAY(1);
         I2C_SCL = 0; //释放总线
-        I2C_DELAY(1);
         if (!cnt && I2C_SDA)//如果最后位发送1，将SDA=0,避免I2C协议通讯失败
             I2C_SDA = 0;
+        I2C_DELAY(1);
     }
 }
+
 /*************************************
 Function: FloatToChar 
 Description: 浮点数转化为char数组
@@ -102,11 +103,12 @@ void I2C_WriteData(uint8_t dat) {
         I2C_SCL = 1; //握手总线
         I2C_DELAY(1);
         I2C_SCL = 0; //释放总线
-        I2C_DELAY(1);
         if (!cnt && I2C_SDA)//如果最后位发送1，将SDA=0,避免I2C协议通讯失败
             I2C_SDA = 0;
+        I2C_DELAY(1);
     }
 }
+
 /*************************************
 Function: FloatToChar 
 Description: 浮点数转化为char数组
@@ -128,6 +130,7 @@ uint8_t I2C_ReadData(void) {
     I2C_SDA_DIR = 0; //数据设置为输出
     return tmp; //返回结果
 }
+
 /*************************************
 Function: FloatToChar 
 Description: 浮点数转化为char数组
@@ -136,17 +139,19 @@ Output: 输出数值
  *************************************/
 uint8_t I2C_ACK(void) {
     uint8_t I2C_SDA_STA; //声明I2C状态变量
-    I2C_SDA_DIR = 1; //切换为输入（必需换方向）
+//    I2C_SDA_DIR = 1; //切换为输入（必需换方向) 通过master控制
+    I2C_DELAY(1);
     I2C_SCL = 1; //握手总线
     I2C_DELAY(1);
     I2C_SDA_STA = (I2C_R_SDA) ? I2C_ERR_NO_ACK : I2C_GET_ACK; //判断是否获取到ACK
     I2C_DELAY(1);
     I2C_SCL = 0; //释放总线
     I2C_DELAY(1);
-    I2C_SDA_DIR = 0; //设置为输出
+//    I2C_SDA_DIR = 0; //设置为输出
     //    I2C_SDA = 1; //数据设置为高
     return I2C_SDA_STA; //返回ACK状态
 }
+
 /*************************************
 Function: FloatToChar 
 Description: 浮点数转化为char数组
