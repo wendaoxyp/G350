@@ -19,16 +19,16 @@ Command:
   build/default/debug/mcc_generated_files/pin_manager.o \
   build/default/debug/mcc_generated_files/interrupt_manager.o \
   build/default/debug/mcc_generated_files/tmr1.o \
-  build/default/debug/I2C_S.o \
   build/default/debug/main.o \
   build/default/debug/Common.o \
-  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00002398.00 \
-  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00002398.01 \
-  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00002398.02 \
-  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00002398.03 \
-  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00002398.04 \
-  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00002398.05 \
-  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00002398.06 \
+  build/default/debug/I2C_S.o \
+  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00001500.00 \
+  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00001500.01 \
+  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00001500.02 \
+  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00001500.03 \
+  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00001500.04 \
+  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00001500.05 \
+  -TC:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp00001500.06 \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
   --defsym=__MPLAB_DEBUG=1 \
@@ -96,10 +96,10 @@ Program Memory  [Origin = 0x100, Length = 0xae00]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x10a           0x18f  (399)
-.text                        0x20a               0x6c6           0xa29  (2601)
-.dinit                       0x8d0                 0x8             0xc  (12)
+.text                        0x20a               0x872           0xcab  (3243)
+.dinit                       0xa7c                 0x8             0xc  (12)
 
-                 Total program memory used (bytes):          0xbc4  (3012) 4%
+                 Total program memory used (bytes):          0xe46  (3654) 5%
 
 
 Data Memory  [Origin = 0x800, Length = 0x4000]
@@ -132,8 +132,8 @@ External Symbols in Program Memory (by address):
 
                   0x000100                  __resetPRI
                   0x00013c                  __psv_init
-                  0x000152                  __data_init
                   0x000152                  __data_init_da
+                  0x000152                  __data_init
                   0x000204                  __DefaultInterrupt
                   0x00020a                  _FloatToChar
                   0x000238                  _CharToFloat
@@ -155,31 +155,30 @@ External Symbols in Program Memory (by address):
                   0x0005ae                  _CmpStr
                   0x0005ba                  _Str_Find_Head
                   0x000668                  _I2C_Init
-                  0x000676                  _I2C_Start
-                  0x000688                  _I2C_Stop
-                  0x00069a                  _I2C_WriteICAdd
-                  0x0006f0                  _I2C_WriteOpretAdd
-                  0x000736                  _I2C_WriteOpretAdd16
-                  0x00073e                  _I2C_WriteData
-                  0x000746                  _I2C_ReadData
-                  0x00074e                  _I2C_ACK
-                  0x000770                  _I2C_NACK
-                  0x000788                  _TMR1_Initialize
-                  0x00079e                  _TMR1_Tasks_16BitOperation
-                  0x0007be                  _TMR1_Period16BitSet
-                  0x0007d0                  _TMR1_Period16BitGet
-                  0x0007d8                  _TMR1_Counter16BitSet
-                  0x0007ea                  _TMR1_Counter16BitGet
-                  0x0007f2                  _TMR1_Start
-                  0x000800                  _TMR1_Stop
-                  0x000808                  _TMR1_GetElapsedThenClear
-                  0x000820                  _TMR1_SoftwareCounterGet
-                  0x00082c                  _TMR1_SoftwareCounterClear
-                  0x000838                  _SYSTEM_Initialize
-                  0x000846                  _OSCILLATOR_Initialize
-                  0x000870                  _main
-                  0x00089a                  _PIN_MANAGER_Initialize
-                  0x0008c0                  _INTERRUPT_Initialize
+                  0x00067a                  _I2C_Start
+                  0x000698                  _I2C_Stop
+                  0x0006b0                  _I2C_WriteICAdd
+                  0x00070e                  _I2C_WriteOpretAdd
+                  0x000768                  _I2C_WriteData
+                  0x0007c2                  _I2C_ReadData
+                  0x00080a                  _I2C_ACK
+                  0x000838                  _I2C_NACK
+                  0x000856                  _main
+                  0x000946                  _TMR1_Initialize
+                  0x00095c                  _TMR1_Tasks_16BitOperation
+                  0x000994                  _TMR1_Period16BitSet
+                  0x0009a6                  _TMR1_Period16BitGet
+                  0x0009ae                  _TMR1_Counter16BitSet
+                  0x0009c0                  _TMR1_Counter16BitGet
+                  0x0009c8                  _TMR1_Start
+                  0x0009d6                  _TMR1_Stop
+                  0x0009de                  _TMR1_GetElapsedThenClear
+                  0x0009f6                  _TMR1_SoftwareCounterGet
+                  0x000a02                  _TMR1_SoftwareCounterClear
+                  0x000a0e                  _SYSTEM_Initialize
+                  0x000a1c                  _OSCILLATOR_Initialize
+                  0x000a46                  _PIN_MANAGER_Initialize
+                  0x000a6c                  _INTERRUPT_Initialize
                   0x00af00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
@@ -199,33 +198,32 @@ External Symbols in Program Memory (by name):
                   0x00020a                  _FloatToChar
                   0x0004f8                  _GetMod
                   0x000294                  _HCD
-                  0x00074e                  _I2C_ACK
+                  0x00080a                  _I2C_ACK
                   0x000668                  _I2C_Init
-                  0x000770                  _I2C_NACK
-                  0x000746                  _I2C_ReadData
-                  0x000676                  _I2C_Start
-                  0x000688                  _I2C_Stop
-                  0x00073e                  _I2C_WriteData
-                  0x00069a                  _I2C_WriteICAdd
-                  0x0006f0                  _I2C_WriteOpretAdd
-                  0x000736                  _I2C_WriteOpretAdd16
-                  0x0008c0                  _INTERRUPT_Initialize
-                  0x000846                  _OSCILLATOR_Initialize
-                  0x00089a                  _PIN_MANAGER_Initialize
-                  0x000838                  _SYSTEM_Initialize
+                  0x000838                  _I2C_NACK
+                  0x0007c2                  _I2C_ReadData
+                  0x00067a                  _I2C_Start
+                  0x000698                  _I2C_Stop
+                  0x000768                  _I2C_WriteData
+                  0x0006b0                  _I2C_WriteICAdd
+                  0x00070e                  _I2C_WriteOpretAdd
+                  0x000a6c                  _INTERRUPT_Initialize
+                  0x000a1c                  _OSCILLATOR_Initialize
+                  0x000a46                  _PIN_MANAGER_Initialize
+                  0x000a0e                  _SYSTEM_Initialize
                   0x00030a                  _SetVaildData
                   0x0005ba                  _Str_Find_Head
-                  0x0007ea                  _TMR1_Counter16BitGet
-                  0x0007d8                  _TMR1_Counter16BitSet
-                  0x000808                  _TMR1_GetElapsedThenClear
-                  0x000788                  _TMR1_Initialize
-                  0x0007d0                  _TMR1_Period16BitGet
-                  0x0007be                  _TMR1_Period16BitSet
-                  0x00082c                  _TMR1_SoftwareCounterClear
-                  0x000820                  _TMR1_SoftwareCounterGet
-                  0x0007f2                  _TMR1_Start
-                  0x000800                  _TMR1_Stop
-                  0x00079e                  _TMR1_Tasks_16BitOperation
+                  0x0009c0                  _TMR1_Counter16BitGet
+                  0x0009ae                  _TMR1_Counter16BitSet
+                  0x0009de                  _TMR1_GetElapsedThenClear
+                  0x000946                  _TMR1_Initialize
+                  0x0009a6                  _TMR1_Period16BitGet
+                  0x000994                  _TMR1_Period16BitSet
+                  0x000a02                  _TMR1_SoftwareCounterClear
+                  0x0009f6                  _TMR1_SoftwareCounterGet
+                  0x0009c8                  _TMR1_Start
+                  0x0009d6                  _TMR1_Stop
+                  0x00095c                  _TMR1_Tasks_16BitOperation
                   0x0004c2                  _ValueIsEqual
                   0x000204                  __DefaultInterrupt
                   0x00af00                  __FSEC.sec
@@ -233,7 +231,7 @@ External Symbols in Program Memory (by name):
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x000870                  _main
+                  0x000856                  _main
                   0x000518                  _my_itoa
 
 Memory Configuration
@@ -261,9 +259,9 @@ LOAD build/default/debug/mcc_generated_files/mcc.o
 LOAD build/default/debug/mcc_generated_files/pin_manager.o
 LOAD build/default/debug/mcc_generated_files/interrupt_manager.o
 LOAD build/default/debug/mcc_generated_files/tmr1.o
-LOAD build/default/debug/I2C_S.o
 LOAD build/default/debug/main.o
 LOAD build/default/debug/Common.o
+LOAD build/default/debug/I2C_S.o
 
 reserve_data_0x800
                     0x0800         0x1c
@@ -385,55 +383,55 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x223d
+.debug_info       0x000000       0x25ea
  *(.debug_info)
  .debug_info      0x000000        0x2c5 build/default/debug/mcc_generated_files/mcc.o
  .debug_info      0x0002c5        0x26f build/default/debug/mcc_generated_files/pin_manager.o
  .debug_info      0x000534        0x38b build/default/debug/mcc_generated_files/interrupt_manager.o
- .debug_info      0x0008bf        0x776 build/default/debug/mcc_generated_files/tmr1.o
- .debug_info      0x001035        0x5f6 build/default/debug/I2C_S.o
- .debug_info      0x00162b        0x45e build/default/debug/main.o
- .debug_info      0x001a89        0x7b4 build/default/debug/Common.o
+ .debug_info      0x0008bf        0x904 build/default/debug/mcc_generated_files/tmr1.o
+ .debug_info      0x0011c3        0x4bd build/default/debug/main.o
+ .debug_info      0x001680        0x7b4 build/default/debug/Common.o
+ .debug_info      0x001e34        0x7b6 build/default/debug/I2C_S.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x545
+.debug_abbrev     0x000000        0x510
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x6a build/default/debug/mcc_generated_files/mcc.o
  .debug_abbrev    0x00006a         0x4c build/default/debug/mcc_generated_files/pin_manager.o
  .debug_abbrev    0x0000b6         0xa7 build/default/debug/mcc_generated_files/interrupt_manager.o
  .debug_abbrev    0x00015d        0x16e build/default/debug/mcc_generated_files/tmr1.o
- .debug_abbrev    0x0002cb         0xf0 build/default/debug/I2C_S.o
- .debug_abbrev    0x0003bb         0xc1 build/default/debug/main.o
- .debug_abbrev    0x00047c         0xc9 build/default/debug/Common.o
+ .debug_abbrev    0x0002cb         0x9d build/default/debug/main.o
+ .debug_abbrev    0x000368         0xc9 build/default/debug/Common.o
+ .debug_abbrev    0x000431         0xdf build/default/debug/I2C_S.o
 
-.debug_line       0x000000        0x687
+.debug_line       0x000000        0x744
  *(.debug_line)
  .debug_line      0x000000        0x10a build/default/debug/mcc_generated_files/mcc.o
  .debug_line      0x00010a         0xb8 build/default/debug/mcc_generated_files/pin_manager.o
  .debug_line      0x0001c2         0xb3 build/default/debug/mcc_generated_files/interrupt_manager.o
- .debug_line      0x000275        0x127 build/default/debug/mcc_generated_files/tmr1.o
- .debug_line      0x00039c        0x127 build/default/debug/I2C_S.o
- .debug_line      0x0004c3         0x96 build/default/debug/main.o
- .debug_line      0x000559        0x12e build/default/debug/Common.o
+ .debug_line      0x000275        0x129 build/default/debug/mcc_generated_files/tmr1.o
+ .debug_line      0x00039e        0x11f build/default/debug/main.o
+ .debug_line      0x0004bd        0x12e build/default/debug/Common.o
+ .debug_line      0x0005eb        0x159 build/default/debug/I2C_S.o
 
-.debug_frame      0x000000        0x57e
+.debug_frame      0x000000        0x562
  *(.debug_frame)
  .debug_frame     0x000000         0x4c build/default/debug/mcc_generated_files/mcc.o
  .debug_frame     0x00004c         0x30 build/default/debug/mcc_generated_files/pin_manager.o
  .debug_frame     0x00007c         0x30 build/default/debug/mcc_generated_files/interrupt_manager.o
  .debug_frame     0x0000ac        0x148 build/default/debug/mcc_generated_files/tmr1.o
- .debug_frame     0x0001f4        0x12c build/default/debug/I2C_S.o
- .debug_frame     0x000320         0x30 build/default/debug/main.o
- .debug_frame     0x000350        0x22e build/default/debug/Common.o
+ .debug_frame     0x0001f4         0x30 build/default/debug/main.o
+ .debug_frame     0x000224        0x22e build/default/debug/Common.o
+ .debug_frame     0x000452        0x110 build/default/debug/I2C_S.o
 
-.debug_str        0x000000         0x63
+.debug_str        0x000000         0x77
  *(.debug_str)
  .debug_str       0x000000         0x1c build/default/debug/mcc_generated_files/mcc.o
  .debug_str       0x00001c          0x9 build/default/debug/mcc_generated_files/interrupt_manager.o
- .debug_str       0x000025         0x13 build/default/debug/mcc_generated_files/tmr1.o
- .debug_str       0x000038         0x13 build/default/debug/I2C_S.o
- .debug_str       0x00004b         0x12 build/default/debug/main.o
- .debug_str       0x00005d          0x6 build/default/debug/Common.o
+ .debug_str       0x000025         0x1c build/default/debug/mcc_generated_files/tmr1.o
+ .debug_str       0x000041         0x13 build/default/debug/main.o
+ .debug_str       0x000054          0x6 build/default/debug/Common.o
+ .debug_str       0x00005a         0x1d build/default/debug/I2C_S.o
 
 .debug_loc
  *(.debug_loc)
@@ -442,7 +440,7 @@ __FDEVOPT1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x39e
+                  0x000000        0x386
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x42 build/default/debug/mcc_generated_files/mcc.o
@@ -453,11 +451,11 @@ __FDEVOPT1
  .debug_pubnames
                   0x00009a        0x11a build/default/debug/mcc_generated_files/tmr1.o
  .debug_pubnames
-                  0x0001b4         0xb7 build/default/debug/I2C_S.o
+                  0x0001b4         0x1b build/default/debug/main.o
  .debug_pubnames
-                  0x00026b         0x1b build/default/debug/main.o
+                  0x0001cf        0x118 build/default/debug/Common.o
  .debug_pubnames
-                  0x000286        0x118 build/default/debug/Common.o
+                  0x0002e7         0x9f build/default/debug/I2C_S.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -473,11 +471,11 @@ __FDEVOPT1
  .debug_aranges
                   0x000048         0x18 build/default/debug/mcc_generated_files/tmr1.o
  .debug_aranges
-                  0x000060         0x18 build/default/debug/I2C_S.o
+                  0x000060         0x18 build/default/debug/main.o
  .debug_aranges
-                  0x000078         0x18 build/default/debug/main.o
+                  0x000078         0x18 build/default/debug/Common.o
  .debug_aranges
-                  0x000090         0x18 build/default/debug/Common.o
+                  0x000090         0x18 build/default/debug/I2C_S.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -1805,7 +1803,7 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x0000a8        0x1d1
+                  0x0000a8        0x219
  .debug_pubtypes
                   0x0000a8         0x1e build/default/debug/mcc_generated_files/mcc.o
  .debug_pubtypes
@@ -1813,34 +1811,34 @@ LOAD data_init
  .debug_pubtypes
                   0x0000d8         0x2f build/default/debug/mcc_generated_files/interrupt_manager.o
  .debug_pubtypes
-                  0x000107         0x87 build/default/debug/mcc_generated_files/tmr1.o
+                  0x000107         0xa4 build/default/debug/mcc_generated_files/tmr1.o
  .debug_pubtypes
-                  0x00018e         0x67 build/default/debug/I2C_S.o
+                  0x0001ab         0x5a build/default/debug/main.o
  .debug_pubtypes
-                  0x0001f5         0x4c build/default/debug/main.o
+                  0x000205         0x38 build/default/debug/Common.o
  .debug_pubtypes
-                  0x000241         0x38 build/default/debug/Common.o
+                  0x00023d         0x84 build/default/debug/I2C_S.o
 
 __c30_signature
-                  0x000279         0x36
+                  0x0002c1         0x36
  __c30_signature
-                  0x000279          0x6 build/default/debug/mcc_generated_files/mcc.o
+                  0x0002c1          0x6 build/default/debug/mcc_generated_files/mcc.o
  __c30_signature
-                  0x00027f          0x6 build/default/debug/mcc_generated_files/pin_manager.o
+                  0x0002c7          0x6 build/default/debug/mcc_generated_files/pin_manager.o
  __c30_signature
-                  0x000285          0x6 build/default/debug/mcc_generated_files/interrupt_manager.o
+                  0x0002cd          0x6 build/default/debug/mcc_generated_files/interrupt_manager.o
  __c30_signature
-                  0x00028b          0x6 build/default/debug/mcc_generated_files/tmr1.o
+                  0x0002d3          0x6 build/default/debug/mcc_generated_files/tmr1.o
  __c30_signature
-                  0x000291          0x6 build/default/debug/I2C_S.o
+                  0x0002d9          0x6 build/default/debug/main.o
  __c30_signature
-                  0x000297          0x6 build/default/debug/main.o
+                  0x0002df          0x6 build/default/debug/Common.o
  __c30_signature
-                  0x00029d          0x6 build/default/debug/Common.o
+                  0x0002e5          0x6 build/default/debug/I2C_S.o
  __c30_signature
-                  0x0002a3          0x6 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extended24.o)
+                  0x0002eb          0x6 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extended24.o)
  __c30_signature
-                  0x0002a9          0x6 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\liblega-pic30-elf.a(data_init_24.o)
+                  0x0002f1          0x6 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\liblega-pic30-elf.a(data_init_24.o)
 
 .bss                0x0828          0x2
  .bss               0x0828          0x2 build/default/debug/mcc_generated_files/tmr1.o
@@ -1868,7 +1866,7 @@ __c30_signature
 .config_IESO      0x00af18          0x2
  .config_IESO     0x00af18          0x2 build/default/debug/mcc_generated_files/mcc.o
 
-.text             0x00020a        0x6c6
+.text             0x00020a        0x872
  .text            0x00020a        0x45e build/default/debug/Common.o
                   0x00020a                  _FloatToChar
                   0x000238                  _CharToFloat
@@ -1889,38 +1887,37 @@ __c30_signature
                   0x000518                  _my_itoa
                   0x0005ae                  _CmpStr
                   0x0005ba                  _Str_Find_Head
- .text            0x000668        0x120 build/default/debug/I2C_S.o
+ .text            0x000668        0x1ee build/default/debug/I2C_S.o
                   0x000668                  _I2C_Init
-                  0x000676                  _I2C_Start
-                  0x000688                  _I2C_Stop
-                  0x00069a                  _I2C_WriteICAdd
-                  0x0006f0                  _I2C_WriteOpretAdd
-                  0x000736                  _I2C_WriteOpretAdd16
-                  0x00073e                  _I2C_WriteData
-                  0x000746                  _I2C_ReadData
-                  0x00074e                  _I2C_ACK
-                  0x000770                  _I2C_NACK
- .text            0x000788         0xb0 build/default/debug/mcc_generated_files/tmr1.o
-                  0x000788                  _TMR1_Initialize
-                  0x00079e                  _TMR1_Tasks_16BitOperation
-                  0x0007be                  _TMR1_Period16BitSet
-                  0x0007d0                  _TMR1_Period16BitGet
-                  0x0007d8                  _TMR1_Counter16BitSet
-                  0x0007ea                  _TMR1_Counter16BitGet
-                  0x0007f2                  _TMR1_Start
-                  0x000800                  _TMR1_Stop
-                  0x000808                  _TMR1_GetElapsedThenClear
-                  0x000820                  _TMR1_SoftwareCounterGet
-                  0x00082c                  _TMR1_SoftwareCounterClear
- .text            0x000838         0x38 build/default/debug/mcc_generated_files/mcc.o
-                  0x000838                  _SYSTEM_Initialize
-                  0x000846                  _OSCILLATOR_Initialize
- .text            0x000870         0x2a build/default/debug/main.o
-                  0x000870                  _main
- .text            0x00089a         0x26 build/default/debug/mcc_generated_files/pin_manager.o
-                  0x00089a                  _PIN_MANAGER_Initialize
- .text            0x0008c0         0x10 build/default/debug/mcc_generated_files/interrupt_manager.o
-                  0x0008c0                  _INTERRUPT_Initialize
+                  0x00067a                  _I2C_Start
+                  0x000698                  _I2C_Stop
+                  0x0006b0                  _I2C_WriteICAdd
+                  0x00070e                  _I2C_WriteOpretAdd
+                  0x000768                  _I2C_WriteData
+                  0x0007c2                  _I2C_ReadData
+                  0x00080a                  _I2C_ACK
+                  0x000838                  _I2C_NACK
+ .text            0x000856         0xf0 build/default/debug/main.o
+                  0x000856                  _main
+ .text            0x000946         0xc8 build/default/debug/mcc_generated_files/tmr1.o
+                  0x000946                  _TMR1_Initialize
+                  0x00095c                  _TMR1_Tasks_16BitOperation
+                  0x000994                  _TMR1_Period16BitSet
+                  0x0009a6                  _TMR1_Period16BitGet
+                  0x0009ae                  _TMR1_Counter16BitSet
+                  0x0009c0                  _TMR1_Counter16BitGet
+                  0x0009c8                  _TMR1_Start
+                  0x0009d6                  _TMR1_Stop
+                  0x0009de                  _TMR1_GetElapsedThenClear
+                  0x0009f6                  _TMR1_SoftwareCounterGet
+                  0x000a02                  _TMR1_SoftwareCounterClear
+ .text            0x000a0e         0x38 build/default/debug/mcc_generated_files/mcc.o
+                  0x000a0e                  _SYSTEM_Initialize
+                  0x000a1c                  _OSCILLATOR_Initialize
+ .text            0x000a46         0x26 build/default/debug/mcc_generated_files/pin_manager.o
+                  0x000a46                  _PIN_MANAGER_Initialize
+ .text            0x000a6c         0x10 build/default/debug/mcc_generated_files/interrupt_manager.o
+                  0x000a6c                  _INTERRUPT_Initialize
 
-.dinit            0x0008d0          0x8
- .dinit           0x0008d0          0x8 data_init
+.dinit            0x000a7c          0x8
+ .dinit           0x000a7c          0x8 data_init

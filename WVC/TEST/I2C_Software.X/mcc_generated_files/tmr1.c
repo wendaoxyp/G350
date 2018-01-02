@@ -19,7 +19,7 @@
     The generated drivers are tested against the following:
         Compiler          :  XC16 1.32
         MPLAB 	          :  MPLAB X 3.61
-*/
+ */
 
 /*
     (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
@@ -41,18 +41,18 @@
 
     MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
     TERMS.
-*/
+ */
 
 /**
   Section: Included Files
-*/
+ */
 
 #include <xc.h>
 #include "tmr1.h"
 
 /**
   Section: Data Type Definitions
-*/
+ */
 
 /** TMR Driver Hardware Instance Object
 
@@ -65,14 +65,13 @@
 
   Remarks:
     None.
-*/
+ */
 
-typedef struct _TMR_OBJ_STRUCT
-{
+typedef struct _TMR_OBJ_STRUCT {
     /* Timer Elapsed */
-    bool                                                    timerElapsed;
+    bool timerElapsed;
     /*Software Counter value*/
-    uint8_t                                                 count;
+    uint8_t count;
 
 } TMR_OBJ;
 
@@ -80,11 +79,10 @@ static TMR_OBJ tmr1_obj;
 
 /**
   Section: Driver Interface
-*/
+ */
 
 
-void TMR1_Initialize (void)
-{
+void TMR1_Initialize(void) {
     //TMR1 0; 
     TMR1 = 0x0000;
     //Period = 1 s; Frequency = 31000 Hz; PR1 31000; 
@@ -92,57 +90,45 @@ void TMR1_Initialize (void)
     //TCKPS 1:1; TON enabled; TSIDL disabled; TCS External; TECS LPRC; TSYNC disabled; TGATE disabled; 
     T1CON = 0x8202;
 
-    
-	
+
+
     tmr1_obj.timerElapsed = false;
 
 }
 
-
-
-void TMR1_Tasks_16BitOperation( void )
-{
+void TMR1_Tasks_16BitOperation(void) {
     /* Check if the Timer Interrupt/Status is set */
-    if(IFS0bits.T1IF)
-    {
+    if (IFS0bits.T1IF) {
         tmr1_obj.count++;
         tmr1_obj.timerElapsed = true;
+        LATBbits.LATB12 ^= 1;
         IFS0bits.T1IF = false;
     }
 }
 
-
-
-void TMR1_Period16BitSet( uint16_t value )
-{
+void TMR1_Period16BitSet(uint16_t value) {
     /* Update the counter values */
     PR1 = value;
     /* Reset the status information */
     tmr1_obj.timerElapsed = false;
 }
 
-uint16_t TMR1_Period16BitGet( void )
-{
-    return( PR1 );
+uint16_t TMR1_Period16BitGet(void) {
+    return ( PR1);
 }
 
-void TMR1_Counter16BitSet ( uint16_t value )
-{
+void TMR1_Counter16BitSet(uint16_t value) {
     /* Update the counter values */
     TMR1 = value;
     /* Reset the status information */
     tmr1_obj.timerElapsed = false;
 }
 
-uint16_t TMR1_Counter16BitGet( void )
-{
-    return( TMR1 );
+uint16_t TMR1_Counter16BitGet(void) {
+    return ( TMR1);
 }
 
-
-
-void TMR1_Start( void )
-{
+void TMR1_Start(void) {
     /* Reset the status information */
     tmr1_obj.timerElapsed = false;
 
@@ -151,36 +137,31 @@ void TMR1_Start( void )
     T1CONbits.TON = 1;
 }
 
-void TMR1_Stop( void )
-{
+void TMR1_Stop(void) {
     /* Stop the Timer */
     T1CONbits.TON = false;
 
 }
 
-bool TMR1_GetElapsedThenClear(void)
-{
+bool TMR1_GetElapsedThenClear(void) {
     bool status;
-    
+
     status = tmr1_obj.timerElapsed;
 
-    if(status == true)
-    {
+    if (status == true) {
         tmr1_obj.timerElapsed = false;
     }
     return status;
 }
 
-int TMR1_SoftwareCounterGet(void)
-{
+int TMR1_SoftwareCounterGet(void) {
     return tmr1_obj.count;
 }
 
-void TMR1_SoftwareCounterClear(void)
-{
-    tmr1_obj.count = 0; 
+void TMR1_SoftwareCounterClear(void) {
+    tmr1_obj.count = 0;
 }
 
 /**
  End of File
-*/
+ */
