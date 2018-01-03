@@ -3,15 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Administrator/Desktop/code/WVC/TEST/I2C_Software.X/Common.c</file>
-            <file>file:/C:/Users/Administrator/Desktop/code/WVC/TEST/I2C_Software.X/mcc_generated_files/i2c1.c</file>
-            <file>file:/C:/Users/Administrator/Desktop/code/WVC/TEST/I2C_Software.X/main.c</file>
-            <file>file:/C:/Users/Administrator/Desktop/code/WVC/TEST/I2C_Software.X/I2C_S.c</file>
-            <file>file:/C:/Users/Administrator/Desktop/code/WVC/TEST/I2C_Software.X/mcc_generated_files/interrupt_manager.c</file>
-            <file>file:/C:/Users/Administrator/Desktop/code/WVC/TEST/I2C_Software.X/I2C_S.h</file>
-            <file>file:/C:/Users/Administrator/Desktop/code/WVC/TEST/I2C_Software.X/mcc_generated_files/mcc.c</file>
-            <file>file:/C:/Users/Administrator/Desktop/code/WVC/TEST/I2C_Software.X/Common.h</file>
-            <file>file:/C:/Users/Administrator/Desktop/code/WVC/TEST/I2C_Software.X/mcc_generated_files/pin_manager.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/code/WVC/MODELS/PCF8583.X/I2C_S.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/code/WVC/MODELS/PCF8583.X/PCF8583.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/code/WVC/MODELS/PCF8583.X/main.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/code/WVC/MODELS/PCF8583.X/mcc_generated_files/mcc.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/code/WVC/MODELS/PCF8583.X/I2C_S.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/code/WVC/MODELS/PCF8583.X/Common.c</file>
+            <file>file:/C:/Users/Administrator/Desktop/code/WVC/MODELS/PCF8583.X/Common.h</file>
+            <file>file:/C:/Users/Administrator/Desktop/code/WVC/MODELS/PCF8583.X/PCF8583.h</file>
         </group>
     </open-files>
 </project-private>

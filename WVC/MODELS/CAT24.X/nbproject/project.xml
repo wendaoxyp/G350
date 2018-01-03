@@ -6,9 +6,9 @@
             <name>CAT24C512</name>
             <creation-uuid>73726556-4ed6-4776-a017-15b02546445a</creation-uuid>
             <make-project-type>0</make-project-type>
-            <c-extensions/>
+            <c-extensions>c</c-extensions>
             <cpp-extensions/>
-            <header-extensions>c,h</header-extensions>
+            <header-extensions>h</header-extensions>
             <asminc-extensions/>
             <sourceEncoding>GB2312</sourceEncoding>
             <make-dep-projects/>

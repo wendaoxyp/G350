@@ -128,6 +128,7 @@ uint8_t I2C_ReadData(void) {
         I2C_DELAY(1);
     }
     I2C_SDA_DIR = 0; //数据设置为输出
+	// I2C_SDA = 0;
     return tmp; //返回结果
 }
 
@@ -139,7 +140,7 @@ Output: 输出数值
  *************************************/
 uint8_t I2C_ACK(void) {
     uint8_t I2C_SDA_STA; //声明I2C状态变量
-//    I2C_SDA_DIR = 1; //切换为输入（必需换方向) 通过master控制
+    //    I2C_SDA_DIR = 1; //切换为输入（必需换方向) 通过master控制
     I2C_DELAY(1);
     I2C_SCL = 1; //握手总线
     I2C_DELAY(1);
@@ -147,7 +148,7 @@ uint8_t I2C_ACK(void) {
     I2C_DELAY(1);
     I2C_SCL = 0; //释放总线
     I2C_DELAY(1);
-//    I2C_SDA_DIR = 0; //设置为输出
+    //    I2C_SDA_DIR = 0; //设置为输出
     //    I2C_SDA = 1; //数据设置为高
     return I2C_SDA_STA; //返回ACK状态
 }

@@ -13,6 +13,7 @@
       </logicalFolder>
       <itemPath>I2C_S.h</itemPath>
       <itemPath>Common.h</itemPath>
+      <itemPath>PCF8583.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
       <logicalFolder name="MCC Generated Files"
@@ -27,6 +28,7 @@
       <itemPath>main.c</itemPath>
       <itemPath>Common.c</itemPath>
       <itemPath>I2C_S.c</itemPath>
+      <itemPath>PCF8583.c</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript" displayName="链接器文件" projectFiles="true">
     </logicalFolder>
@@ -215,6 +217,7 @@
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
         <property key="UART 1" value="true"/>
         <property key="UART 2" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>

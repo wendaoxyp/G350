@@ -28,8 +28,6 @@
 #define I2C_R_SDA           PORTBbits.RB5
 #define I2C_WRITE                       0
 #define I2C_READ                        1
-//#ifndef CAT_ADD
-#define I2C_TEST_ADD                    0b10101000
 //#endif
 #define I2C_ERR_NO_ACK                  1
 #define I2C_GET_ACK                     2
@@ -43,9 +41,9 @@ extern void I2C_Start(void);
 //extern void I2C_Restart(void);
 extern void I2C_Stop(void);
 extern void I2C_WriteICAdd(const uint8_t add, const uint8_t opreation);
-extern void I2C_WriteOpretAdd(uint8_t add);
-extern void I2C_WriteOpretAdd16(uint16_t add);
-extern void I2C_WriteData(uint8_t dat);
+extern void I2C_WriteOpretAdd(const uint8_t add);
+extern void I2C_WriteOpretAdd16(const uint16_t add);
+extern void I2C_WriteData(const uint8_t dat);
 extern uint8_t I2C_ReadData(void);
 extern uint8_t I2C_ACK(void);
 extern void I2C_NACK(void);
