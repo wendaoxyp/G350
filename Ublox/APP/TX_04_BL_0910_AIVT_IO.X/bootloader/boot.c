@@ -61,8 +61,8 @@ int main() {
     TRISBbits.TRISB15 = 0; //…Ë÷√Œ™ ‰≥ˆ
     LATBbits.LATB15 = 0;
     //Configure UART pins to be digital I/O.
-    //    ANSBbits.ANSB3 = 0;
-    //    TRISBbits.TRISB3 = 1;
+    ANSBbits.ANSB3 = 0;
+    TRISBbits.TRISB3 = 1;
     /********************Configure UART1***********************/
     U2MODEbits.UARTEN = 1; //enable uar
     U2BRG = 26; //BAUDRATEREG;19200
