@@ -742,7 +742,7 @@ Output: 是否需要重启
  *************************************/
 Bool CMDRec_HandleCmd(uartsendstring uart, CMDTYPE cmdtype, uint8_t * Ublox_buf) {//指令回复
     uint8_t sta = gTX04Sta;
-    Bool is_need_restart = False, isArg1 = False;
+    Bool is_need_restart = False; // isArg1 = False;
     TX04ARG RunArg1;
     TX04ARG* runarg = &RunArg1;
 
@@ -846,57 +846,44 @@ Bool CMDRec_HandleCmd(uartsendstring uart, CMDTYPE cmdtype, uint8_t * Ublox_buf)
         }
         case CMD_GPCH1:
         {
-            isArg1 = (RunArg.CRC16 == TX04Arg_S.CRC16); //判断运行的参数是哪一个中心参数
-            if (sta == TX04_Sta_Ready) {//如果是就绪状态
-                UART2SendString((uint8_t*) TX04_SEND_OFF1, 8); //发送GPOFF1
-                if (isArg1) {//写参数二，重启
+            if (RunArg.CRC16 == TX04Arg2_S.CRC16); //如果是中心参数二的话
+            {
+                if (sta == TX04_Sta_Ready) {//如果是就绪状态
+                    UART2SendString((uint8_t*) TX04_SEND_OFF1, 8); //发送GPOFF1
                     EnsureRunArg(&TX04Arg2_S);
-                } else {//写参数一，重启
-                    EnsureRunArg(&TX04Arg_S);
+                    ChangeBaudRate();
+                    UART2SendString(USER_READY, sizeof (USER_READY)); //8字节，方便客户判断READY\r\n\0
                 }
-                ChangeBaudRate();
-                UART2SendString(USER_READY, sizeof (USER_READY)); //8字节，方便客户判断READY\r\n\0
-            }
-            if (TX04IsWorkSta(sta)) {// == TX04_Sta_TCP_Cop) {                             
-                UbloxCloseTCPClient(); //先关闭连接点
-                UbloxDisablePSD();
-                UART2SendString((uint8_t*) TX04_SEND_OFF1, 8); //发送GPOFF
-                if (isArg1) {//序号变换参数，重启
+                if (TX04IsWorkSta(sta)) {// == TX04_Sta_TCP_Cop) {                             
+                    UbloxCloseTCPClient(); //先关闭连接点
+                    UbloxDisablePSD();
+                    UART2SendString((uint8_t*) TX04_SEND_OFF1, 8); //发送GPOFF
                     EnsureRunArg(&TX04Arg2_S);
-                } else {
-                    EnsureRunArg(&TX04Arg_S);
+                    ChangeBaudRate(); //改变波特率
+                    gReloadGPRS = True;
+                    is_need_restart = True;
                 }
-                ChangeBaudRate(); //改变波特率
-                gReloadGPRS = True;
-                is_need_restart = True;
             }
             break;
         }
         case CMD_GPCH2:
         {
-            isArg1 = (RunArg.CRC16 == TX04Arg_S.CRC16); //判断运行的参数是哪一个中心参数
-            if (sta == TX04_Sta_Ready) {//如果是就绪状态
-                UART2SendString((uint8_t*) TX04_SEND_OFF2, 8); //发送GPOFF2
-                if (isArg1) {//写参数二，重启                    
-                    EnsureRunArg(&TX04Arg2_S);
-                } else {//写参数一，重启
+            if (RunArg.CRC16 == TX04Arg_S.CRC16) { //判断运行的参数是哪一个中心参数
+                if (sta == TX04_Sta_Ready) {//如果是就绪状态
+                    UART2SendString((uint8_t*) TX04_SEND_OFF2, 8); //发送GPOFF2
                     EnsureRunArg(&TX04Arg_S);
+                    ChangeBaudRate();
+                    UART2SendString(USER_READY, sizeof (USER_READY)); //8字节，方便客户判断READY\r\n\0
                 }
-                ChangeBaudRate();
-                UART2SendString(USER_READY, sizeof (USER_READY)); //8字节，方便客户判断READY\r\n\0
-            }
-            if (TX04IsWorkSta(sta)) {// == TX04_Sta_TCP_Cop) {                             
-                UbloxCloseTCPClient(); //先关闭连接点
-                UbloxDisablePSD();
-                UART2SendString((uint8_t*) TX04_SEND_OFF2, 8); //发送GPOFF
-                if (isArg1) {//序号变换参数，重启
-                    EnsureRunArg(&TX04Arg2_S);
-                } else {
+                if (TX04IsWorkSta(sta)) {// == TX04_Sta_TCP_Cop) {                             
+                    UbloxCloseTCPClient(); //先关闭连接点
+                    UbloxDisablePSD();
+                    UART2SendString((uint8_t*) TX04_SEND_OFF2, 8); //发送GPOFF
                     EnsureRunArg(&TX04Arg_S);
+                    ChangeBaudRate(); //改变波特率
+                    gReloadGPRS = True;
+                    is_need_restart = True;
                 }
-                ChangeBaudRate(); //改变波特率
-                gReloadGPRS = True;
-                is_need_restart = True;
             }
             break;
         }
