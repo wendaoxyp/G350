@@ -846,44 +846,41 @@ Bool CMDRec_HandleCmd(uartsendstring uart, CMDTYPE cmdtype, uint8_t * Ublox_buf)
         }
         case CMD_GPCH1:
         {
-            if (RunArg.CRC16 == TX04Arg2_S.CRC16); //如果是中心参数二的话
-            {
-                if (sta == TX04_Sta_Ready) {//如果是就绪状态
-                    UART2SendString((uint8_t*) TX04_SEND_OFF1, 8); //发送GPOFF1
-                    EnsureRunArg(&TX04Arg2_S);
-                    ChangeBaudRate();
-                    UART2SendString(USER_READY, sizeof (USER_READY)); //8字节，方便客户判断READY\r\n\0
-                }
-                if (TX04IsWorkSta(sta)) {// == TX04_Sta_TCP_Cop) {                             
-                    UbloxCloseTCPClient(); //先关闭连接点
-                    UbloxDisablePSD();
-                    UART2SendString((uint8_t*) TX04_SEND_OFF1, 8); //发送GPOFF
-                    EnsureRunArg(&TX04Arg2_S);
-                    ChangeBaudRate(); //改变波特率
-                    gReloadGPRS = True;
-                    is_need_restart = True;
-                }
+            if (sta == TX04_Sta_Ready) {//如果是就绪状态
+                UART2SendString(TX04_SEND_OFF1, sizeof (TX04_SEND_OFF1) - 1); //发送GPOFF1
+                EnsureRunArg(&TX04Arg_S);
+                ChangeBaudRate();
+                UART2SendString(USER_READY, sizeof (USER_READY) - 1); //8字节，方便客户判断READY\r\n
+                is_need_restart = True; //需要重启模块
+            }
+            if (TX04IsWorkSta(sta)) {// == TX04_Sta_TCP_Cop) {                             
+                UbloxCloseTCPClient(); //先关闭连接点
+                UbloxDisablePSD();
+                UART2SendString(TX04_SEND_OFF1, sizeof (TX04_SEND_OFF1)); //发送GPOFF1
+                EnsureRunArg(&TX04Arg_S);
+                ChangeBaudRate(); //改变波特率
+                gReloadGPRS = True;
+                is_need_restart = True;
             }
             break;
         }
         case CMD_GPCH2:
         {
-            if (RunArg.CRC16 == TX04Arg_S.CRC16) { //判断运行的参数是哪一个中心参数
-                if (sta == TX04_Sta_Ready) {//如果是就绪状态
-                    UART2SendString((uint8_t*) TX04_SEND_OFF2, 8); //发送GPOFF2
-                    EnsureRunArg(&TX04Arg_S);
-                    ChangeBaudRate();
-                    UART2SendString(USER_READY, sizeof (USER_READY)); //8字节，方便客户判断READY\r\n\0
-                }
-                if (TX04IsWorkSta(sta)) {// == TX04_Sta_TCP_Cop) {                             
-                    UbloxCloseTCPClient(); //先关闭连接点
-                    UbloxDisablePSD();
-                    UART2SendString((uint8_t*) TX04_SEND_OFF2, 8); //发送GPOFF
-                    EnsureRunArg(&TX04Arg_S);
-                    ChangeBaudRate(); //改变波特率
-                    gReloadGPRS = True;
-                    is_need_restart = True;
-                }
+            if (sta == TX04_Sta_Ready) {//如果是就绪状态
+                UART2SendString(TX04_SEND_OFF2, sizeof (TX04_SEND_OFF2) - 1); //发送GPOFF2
+                EnsureRunArg(&TX04Arg2_S);
+                ChangeBaudRate();
+                UART2SendString(USER_READY, sizeof (USER_READY) - 1); //8字节，方便客户判断READY\r\n
+                is_need_restart = True; //需要重启模块
+            }
+            if (TX04IsWorkSta(sta)) {// == TX04_Sta_TCP_Cop) {                             
+                UbloxCloseTCPClient(); //先关闭连接点
+                UbloxDisablePSD();
+                UART2SendString(TX04_SEND_OFF2, sizeof (TX04_SEND_OFF2) - 1); //发送GPOFF1
+                EnsureRunArg(&TX04Arg2_S);
+                ChangeBaudRate(); //改变波特率
+                gReloadGPRS = True;
+                is_need_restart = True;
             }
             break;
         }
@@ -895,7 +892,7 @@ Bool CMDRec_HandleCmd(uartsendstring uart, CMDTYPE cmdtype, uint8_t * Ublox_buf)
                 runarg->WorkMode = TX04_ARG_WORK_MODE_GSM; //工作模式设置为短信模式
                 EnsureRunArg(runarg); //确认运行参数
                 gRefreshArg = 1; //就绪，发送强制短信，模块下线，需要重新载入参数
-                is_need_restart = True;
+                is_need_restart = True; //需要重启模块
             } else {
                 IntoGSM5S(sta, 0); //进入强制短信模式
             }
