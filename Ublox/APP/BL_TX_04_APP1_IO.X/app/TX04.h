@@ -30,8 +30,8 @@ extern const char TX04_TXYBJT[]; // = {"+TXYBJT "}; //TX04在线接收帧头
 extern const char TX04_TESTW0_Rec[]; // = {"+RECW0"};
 extern const char TX04_TESTW2_Rec[]; // = {"+RECW2"};
 extern const char TX04_TECH_Rec[]; // = {"+TXYBJT DTU Software,VERtrkj_v04.0\r\n"};
-extern const char TX04_GPSQ_Rec[]; // = {"CSQ_11"};
-extern const char TX04_GPST_Rec[]; //= {"DW: \"XXXX\",\"XXXX\",\"APN\""};
+//extern const char TX04_GPSQ_Rec[]; // = {"CSQ_11"};
+//extern const char TX04_GPST_Rec[]; //= {"DW: \"XXXX\",\"XXXX\",\"APN\""};
 extern const char TX04_SEND_OFF[];
 extern const char TX04_HEARTBEAT[];
 extern const uint32_t STORE_ARG1_ADD; //= 0x00AD00; //定义参数在程序存储器中的位置
@@ -47,7 +47,7 @@ extern volatile uint8_t gTX04Sta; //GPRS状态 就绪状态  TCP状态 UDP状态 GSM状态
 #define TX04_Sta_UDP_Cop                   0x78    //UDP工作状态							
 #define TX04_Sta_GSM_Cop                   0x79    //GSM工作状态		
 
-#define TX04_ARG_CONTROL_MODE_SOFEWARE  0x30//软件控制
+//#define TX04_ARG_CONTROL_MODE_SOFEWARE  0x30//软件控制
 #define TX04_ARG_CONTROL_MODE_HARDWARE  0x31//EN控制
 #define TX04_ARG_TCP_UDP_TCP            0x30//TCP协议
 #define TX04_ARG_TCP_UDP_UDP            0x31//UDP协议
@@ -113,20 +113,13 @@ extern/* volatile*/ TX04ARG TX04Arg_S;
 extern/* volatile*/ TX04ARG TX04Arg2_S;
 extern TX04ARG RunArg; //结构体
 
-enum CMD_TP { //指令类型定义 注意必须要从零开始，和偏移数组有关
+enum CMD_TP { //指令类型定义 注意必须要从零开始，和偏移数组有关  //必须和上面的TX04_CMD_ARRY类型对应
     CMD_TESTW0 = 0x0 /*写参数0*/, CMD_TESTW2 = 0x1 /*写参数1*/, CMD_TESTR0 = 0x2 /*读参数0*/, CMD_TESTR2 = 0x3 /*读参数1*/, CMD_TECH = 0x4 /*读取版本号*/,
     CMD_GPON = 0x5 /*上线*/, CMD_GPOF = 0x6 /*下线*/, CMD_GPSQ = 0x7 /*检索强度*/, CMD_GPCH1 = 0x8 /*切换中心*/, CMD_GPCH2 = 0x9, /*切换中心*/
     CMD_GPSM = 0xA /*强制短信一*/, CMD_GPSS = 0xB /*强制短信二*/, CMD_GPST = 0xC /*获取地理信息*/, CMD_GRCH = 0xD/*SMS切换中心*/, CMD_GROF = 0xE /*SMS下线*/,
     CMD_GPID = 0xF /*获取ICCID*/, CMD_NO_CMD = 0x10 /*没有有效的指令*/
 };
 extern enum CMD_TP cmd_tp;
-extern const char TX04_CMD_ARRY[16][4]; //必须和上面的CMD_TP类型对应
-// = {
-//    "STW0", "STW2", "STR0", "STR2", "TECH",
-//    "GPON", "GPOF", "GPSQ", "PCH1", "PCH2",
-//    "GPSM", "GPSS", "GPST", "GRCH", "GROF",
-//    "GPID"
-//};
 
 extern volatile uint8_t gTX04Sta;
 /***************************************************************************
@@ -145,17 +138,13 @@ extern CMDTYPE TX04GetCMDType(const uint8_t* Ublox_buf, const uint8_t bytes);
 extern uint8_t TX04GetWorkMode(TX04ARG tx04arg);
 extern uint8_t TX04Connect(uint8_t workmode, uint8_t *);
 extern Bool TX04DataInterchange(uint8_t workmode);
-extern void User_PrintErrCode(uartsendstring uart, uint8_t errcode);
-//extern Bool TX04CMDIsQuickCMD(CMDTYPE cmdtype);
+//extern void User_PrintErrCode(uartsendstring uart, uint8_t errcode);
 extern Bool ControlModeIsEN(void);
 extern void TX04Sleep(void);
 extern uint8_t TX04GetMasthead(uint8_t*);
 extern void TX04GetRunArg(void);
 extern void ChangeBaudRate(void);
 extern Bool CMDRec_HandleCmd(uartsendstring uart, CMDTYPE cmdtype, uint8_t * Ublox_buf);
-//extern Bool CMDRec_HandleGPRS(CMDTYPE cmdtype);
-//extern Bool CMDRec_HandleGSM(CMDTYPE cmdtype);
-extern Bool IsRestart(void);
 extern void TX04ReportMasthead(uint8_t workmode);
 extern Bool BootLoader(void);
 extern Bool TX04SMSArgIsRight(uint8_t workmode);
