@@ -150,8 +150,13 @@ volatile uint8_t gGPRSIsONline = 0; //上线标志位
 volatile uint8_t gTX04Sta; //GPRS状态 就绪状态  TCP状态 UDP状态 GSM状态
 extern const char Set_SMS_NEW_TIP[12];
 //确定运行的参数
-const uint8_t TX04_NET_FIND_CODE[G350_F_NET_SIZE] = {2, 1, 0, 5, 0};
-const uint8_t TX04_CONNECT_CODE[G350_TCP_Client_SIZE] = {4, 0, 0, 0, 0, 0, 6, 0};
+const uint8_t TX04_NET_FIND_CODE[G350_F_NET_SIZE] = {2, 1, 0, 5, 0}; //找基站错误提示
+const uint8_t TX04_CONNECT_CODE[G350_TCP_Client_SIZE] = {4, 0, 0, 0, 0, 0, 6, 0}; //找TCP连接错误提示
+
+
+/***************************************************************************
+ * Code
+ ***************************************************************************/
 
 /***************************************************************************
 Function: EnsureRunArg
@@ -189,10 +194,6 @@ void ChangeBaudRate(void) {
         uart2_baud = BaudRateArry[RunArg.BaudRate - 0x30];
     U2BRG = OSC_Freq / uart2_baud / 4 - 1; //改变波特率
 }
-
-/***************************************************************************
- * Code
- ***************************************************************************/
 
 /***************************************************************************
 Function: TX04_Init
@@ -598,6 +599,14 @@ void TX04ReadSIMIDByCMD(uartsendstring uart) {//打印获取ICCID
     uart(tmp, bytes);
 }
 
+/***************************************************************************
+Function: TX04GetArgByDialing
+Description: 下线 通过AT指令获取网络参数
+Input:参数
+Output: 是否获取成功
+Return: 
+Others: none
+ ***************************************************************************/
 Bool TX04GetArgByDialing(uint8_t arg) {//通过拨号获取ICCID，下线状态发送+TXYBJT GPID
     Bool b_sta = False; //申明状态变量
     uint8_t step = 0;
@@ -620,10 +629,10 @@ Bool TX04GetArgByDialing(uint8_t arg) {//通过拨号获取ICCID，下线状态发送+TXYBJT 
                 break;
         }
     }
-    CloseUART1();
+    CloseUART1(); //关闭串口1
     CloseUblox(); //关闭Ublox 
     Delay100ms(15); //等待设备完全关闭
-    UART2SendString((uint8_t*) USER_READY, 7);
+    UART2SendString((uint8_t*) USER_READY, 7); //发送就绪状态
 
     return b_sta;
 }
@@ -689,17 +698,17 @@ Others:间隔时间单位100ms
  ***************************************************************************/
 void LED_Blink(uint8_t Cnt, uint8_t Dly100ms) {
     uint8_t cnt;
+
     GLED = 1;
     for (cnt = 0; cnt < Cnt; cnt++) {
-
         Delay100ms(Dly100ms); //避免硬件上的重复进入该中断
         GLED ^= 1; //消耗电容C22电量，EN下线
     }
-    GLED = 0;
+    GLED = 0; //最后一定要加，避免奇数情况下，灯常亮
 }
 
 /***************************************************************************
-Function: Task1Upload 
+Function: IsGetMasthead 
 Description: 判断是是否是报头//判断帧头是否是TXYBJT,
 Input: 参数指针，数据字节数
 Output:返回所在的字节位置+1
@@ -853,9 +862,9 @@ Bool CMDRec_HandleCmd(uartsendstring uart, CMDTYPE cmdtype, uint8_t * Ublox_buf)
                 UART2SendString(USER_READY, sizeof (USER_READY) - 1); //8字节，方便客户判断READY\r\n
                 is_need_restart = True; //需要重启模块
             }
-            if (TX04IsWorkSta(sta)) {// == TX04_Sta_TCP_Cop) {                             
-                UbloxCloseTCPClient(); //先关闭连接点
-                UbloxDisablePSD();
+            if (TX04IsWorkSta(sta)) {//如果是工作模式                          
+                UbloxCloseTCPClient(); //如果是TCP模式，先关闭连接点
+                UbloxDisablePSD(); //切换到命令模式
                 UART2SendString(TX04_SEND_OFF1, sizeof (TX04_SEND_OFF1)); //发送GPOFF1
                 EnsureRunArg(&TX04Arg_S);
                 ChangeBaudRate(); //改变波特率
@@ -866,21 +875,23 @@ Bool CMDRec_HandleCmd(uartsendstring uart, CMDTYPE cmdtype, uint8_t * Ublox_buf)
         }
         case CMD_GPCH2:
         {
-            if (sta == TX04_Sta_Ready) {//如果是就绪状态
-                UART2SendString(TX04_SEND_OFF2, sizeof (TX04_SEND_OFF2) - 1); //发送GPOFF2
-                EnsureRunArg(&TX04Arg2_S);
-                ChangeBaudRate();
-                UART2SendString(USER_READY, sizeof (USER_READY) - 1); //8字节，方便客户判断READY\r\n
-                is_need_restart = True; //需要重启模块
-            }
-            if (TX04IsWorkSta(sta)) {// == TX04_Sta_TCP_Cop) {                             
-                UbloxCloseTCPClient(); //先关闭连接点
-                UbloxDisablePSD();
-                UART2SendString(TX04_SEND_OFF2, sizeof (TX04_SEND_OFF2) - 1); //发送GPOFF1
-                EnsureRunArg(&TX04Arg2_S);
-                ChangeBaudRate(); //改变波特率
-                gReloadGPRS = True;
-                is_need_restart = True;
+            if ((TX04Arg2_S.Port != 0)&&(TX04Arg2_S.IP[0] + TX04Arg2_S.IP[1] + TX04Arg2_S.IP[2] + TX04Arg2_S.IP[3] != 0)) {//如果参数二是无效参数（IP：0,0,0,0 Port:0）
+                if (sta == TX04_Sta_Ready) {//如果是就绪状态
+                    UART2SendString(TX04_SEND_OFF2, sizeof (TX04_SEND_OFF2) - 1); //发送GPOFF2
+                    EnsureRunArg(&TX04Arg2_S);
+                    ChangeBaudRate();
+                    UART2SendString(USER_READY, sizeof (USER_READY) - 1); //8字节，方便客户判断READY\r\n
+                    is_need_restart = True; //需要重启模块
+                }
+                if (TX04IsWorkSta(sta)) {//如果是工作模式                              
+                    UbloxCloseTCPClient(); //如果是TCP模式，先关闭连接点
+                    UbloxDisablePSD(); //切换到命令模式
+                    UART2SendString(TX04_SEND_OFF2, sizeof (TX04_SEND_OFF2) - 1); //发送GPOFF2
+                    EnsureRunArg(&TX04Arg2_S);
+                    ChangeBaudRate(); //改变波特率
+                    gReloadGPRS = True;
+                    is_need_restart = True;
+                }
             }
             break;
         }
@@ -1070,10 +1081,56 @@ Bool TX04DataInterchange(uint8_t workmode) {//开始拨号连接
         }
     } while (gGPRSIsONline); //通讯异常结束
     GLED = 0; //关闭电流  
-
     return True;
 }
 
+/***************************************************************************
+Function: GetGPRSArgFromFlash
+Description: 通过读取Flash读取GPRS参数
+Input: 地址
+Output: 无
+Return: 无
+Others: 支持参数一和参数二
+ ***************************************************************************/
+static void GetGPRSArgFromFlash(const uint32_t add) {
+    uint8_t arg1[200], cnt = 0, cnt1 = 0;
+    uint8_t argtmp[200];
+    uint8_t * source_ptr;
+    TX04ARG* arg_ptr;
+    Bool isArg1 = add == STORE_ARG1_ADD;
+
+    ReadArgFromFlash(add, arg1, 176); //读取参数
+    for (cnt = 0, cnt1 = 0; cnt < 176; cnt += 4, cnt1 += 3) {
+        CopyDat(argtmp + cnt1, arg1 + cnt, 3);
+    }
+    source_ptr = (CRCIsRight(argtmp, 128, argtmp + 128)) ? argtmp : (uint8_t *) TX04DefualtArg;
+    arg_ptr = (isArg1) ? &TX04Arg_S : &TX04Arg2_S;
+    CopyDat(arg_ptr, source_ptr, 130);
+}
+
+/***************************************************************************
+Function: TX04GetRunArg
+Description: 获取运行参数
+Input: 无
+Output: 无
+Return: 无
+Others: 
+ ***************************************************************************/
+void TX04GetRunArg(void) {
+    GetGPRSArgFromFlash(STORE_ARG1_ADD);
+    GetGPRSArgFromFlash(STORE_ARG2_ADD);
+    EnsureRunArg(&TX04Arg_S); //确定运行的程序
+    ChangeBaudRate(); //修改波特率
+}
+
+/***************************************************************************
+Function: TX04ReportMasthead
+Description: 模块上线，发送报头数据
+Input: 工作模式（workmode）
+Output: 无
+Return: 无
+Others: 支持UDP和短信
+ ***************************************************************************/
 void TX04ReportMasthead(uint8_t workmode) {
     uint8_t masthead_dat[50], masthead_bytes = 9; //报头的数据和字节数变量
     if (RunArg.ReportEN == 0x31) {//是否开启报头
@@ -1099,38 +1156,9 @@ void TX04ReportMasthead(uint8_t workmode) {
     }
 }
 
-static void GetGPRSArgFromFlash(const uint32_t add) {
-    uint8_t arg1[200], cnt = 0, cnt1 = 0;
-    uint8_t argtmp[200];
-    uint8_t * source_ptr;
-    TX04ARG* arg_ptr;
-    Bool isArg1 = add == STORE_ARG1_ADD;
-
-    ReadArgFromFlash(add, arg1, 176); //读取参数
-    for (cnt = 0, cnt1 = 0; cnt < 176; cnt += 4, cnt1 += 3) {
-        CopyDat(argtmp + cnt1, arg1 + cnt, 3);
-    }
-    source_ptr = (CRCIsRight(argtmp, 128, argtmp + 128)) ? argtmp : (uint8_t *) TX04DefualtArg;
-    arg_ptr = (isArg1) ? &TX04Arg_S : &TX04Arg2_S;
-    CopyDat(arg_ptr, source_ptr, 130);
-}
-
-void TX04GetRunArg(void) {
-
-    GetGPRSArgFromFlash(STORE_ARG1_ADD);
-    GetGPRSArgFromFlash(STORE_ARG2_ADD);
-    EnsureRunArg(&TX04Arg_S); //确定运行的程序
-    ChangeBaudRate(); //修改波特率
-}
-
-Bool ControlModeIsEN(void) {
-
-    return RunArg.ControlMode == TX04_ARG_CONTROL_MODE_HARDWARE;
-}
-
 /*************************************
  * Function: TX04GetMasthead
- * Description: 获取抱头数据
+ * Description: 获取报头数据
  * Input: 获取抱头数据
  * Output: 获取抱头数据的长度
  * Notice：字节数不能大于256
@@ -1166,10 +1194,6 @@ uint8_t TX04GetMasthead(uint8_t * masthead_dat) {
 
     return length;
 }
-
-//Bool TX04IsWorkSta(uint8_t sta) {
-//    return ((sta == TX04_Sta_TCP_Cop) || (sta == TX04_Sta_GSM_Cop) || (sta == TX04_Sta_UDP_Cop) || (sta == TX04_Sta_Sleep));
-//}
 
 /***************************************************************************
 Function: TX04SMSArgIsRight 
