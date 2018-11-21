@@ -224,8 +224,7 @@ static Bool TCP_IsDisconnect(uint8_t* Ublox_2_buf, uint8_t getsize2) {
     if (Str_Find_Head(Ublox_2_buf, "D", getsize2, 1) > 0) {//如果获取到+字符 hjksdfa+TXYBJT TECH
         getsize2 += UARTGetDat(BufferRead_UART1, Ublox_2_buf + getsize2, 0xff - getsize2, 8); //120
         if (Str_Find_Head(Ublox_2_buf, TX04_DISCONNECT, getsize2, sizeof (TX04_DISCONNECT) - 1)) {//如果连接监控中心失败，中心主动关闭设备
-            PrintErr(15);
-            //            gGPRSIsONline = False; //服务端断开连接，重启模块
+            PrintErr(15);//打印错误提示FAIL15
             is_disconnnect = True;
         }
     }
