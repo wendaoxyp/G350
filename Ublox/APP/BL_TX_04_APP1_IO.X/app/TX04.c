@@ -444,7 +444,7 @@ Bool TX04WriteArgByCMD(const uint32_t argadd, uartsendstring uart, uint8_t * Ubl
     char *send_ptr;
     TX04ARG *arg_ptr;
 
-    if (Ublox_buf[0] && CRCIsRight(Ublox_buf, 128, Ublox_buf + 128)) {//判断CRC校验是否正确        
+    if (CRCIsRight(Ublox_buf, 128, Ublox_buf + 128)) {//判断CRC校验是否正确        
         other_arg = (isArg1) ? STORE_ARG2_ADD : STORE_ARG1_ADD; //判断接下来要写参数的位置 
         send_ptr = (isArg1) ? (char *) TX04_TESTW0_Rec : (char *) TX04_TESTW2_Rec;
         arg_ptr = (isArg1) ? &TX04Arg_S : &TX04Arg2_S; //设置参数 写入Flash
