@@ -224,7 +224,7 @@ static Bool TCP_IsDisconnect(uint8_t* Ublox_2_buf, uint8_t getsize2) {
     if (Str_Find_Head(Ublox_2_buf, "D", getsize2, 1) > 0) {//如果获取到+字符 hjksdfa+TXYBJT TECH
         getsize2 += UARTGetDat(BufferRead_UART1, Ublox_2_buf + getsize2, 0xff - getsize2, 8); //120
         if (Str_Find_Head(Ublox_2_buf, TX04_DISCONNECT, getsize2, sizeof (TX04_DISCONNECT) - 1)) {//如果连接监控中心失败，中心主动关闭设备
-            PrintErr(15);//打印错误提示FAIL15
+            PrintErr(15); //打印错误提示FAIL15
             is_disconnnect = True;
         }
     }
@@ -665,7 +665,7 @@ Output: 数据类型代号
  *************************************/
 CMDTYPE TX04GetCMDType(const uint8_t* Ublox_buf, const uint8_t bytes) {
     int8_t cnt;
-    for (cnt = 14; cnt >= 0; cnt--) {//debug查看是否是15个数组
+    for (cnt = sizeof (TX04_CMD_ARRY); cnt >= 0; cnt--) {//debug查看是否是15个数组
         if (Str_Find_Head(Ublox_buf, TX04_CMD_ARRY[cnt], bytes, 4)) {
             return cnt;
         }
