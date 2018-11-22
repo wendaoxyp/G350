@@ -53,6 +53,8 @@ int main() {
     TMR3 = 0;
     T2CONbits.TON = 1; //enable timer
     /********************IO Map***********************/
+    _TRISA0 = 0;
+    _LATA0 = 0; //¹Ø±ÕLKÊä³ö
     __builtin_write_OSCCONL(OSCCON & 0xFFBF); //If using a part with PPS, map the UART I/O
     _U2RXR = 3; // U2RX on RP3
     _RP2R = 5; //RP2=U2TX    
@@ -63,6 +65,7 @@ int main() {
     //Configure UART pins to be digital I/O.
     ANSBbits.ANSB3 = 0;
     TRISBbits.TRISB3 = 1;
+
     /********************Configure UART1***********************/
     U2MODEbits.UARTEN = 1; //enable uar
     U2BRG = 26; //BAUDRATEREG;19200
