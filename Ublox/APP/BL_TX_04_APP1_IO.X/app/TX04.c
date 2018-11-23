@@ -665,7 +665,7 @@ Output: 数据类型代号
  *************************************/
 CMDTYPE TX04GetCMDType(const uint8_t* Ublox_buf, const uint8_t bytes) {
     int8_t cnt;
-    for (cnt = sizeof (TX04_CMD_ARRY); cnt >= 0; cnt--) {//debug查看是否是15个数组
+    for (cnt = (sizeof (TX04_CMD_ARRY) >> 2) - 1; cnt >= 0; cnt--) {//debug查看是否是15个数组
         if (Str_Find_Head(Ublox_buf, TX04_CMD_ARRY[cnt], bytes, 4)) {
             return cnt;
         }
@@ -795,7 +795,7 @@ Bool CMDRec_HandleCmd(uartsendstring uart, CMDTYPE cmdtype, uint8_t * Ublox_buf)
             if (TX04IsWorkSta(sta)) {//如果是工作模式                          
                 UbloxCloseTCPClient(); //如果是TCP模式，先关闭连接点
                 UbloxDisablePSD(); //切换到命令模式
-                UART2SendString(TX04_SEND_OFF1, sizeof (TX04_SEND_OFF1)); //发送GPOFF1
+                UART2SendString(TX04_SEND_OFF1, sizeof (TX04_SEND_OFF1)-1); //发送GPOFF1
                 EnsureRunArg(&TX04Arg_S);
                 ChangeBaudRate(); //改变波特率
                 gReloadGPRS = True;
