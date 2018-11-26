@@ -15,7 +15,7 @@ const char TX04_TXYBJT[] = {"+TXYBJT "}; //TX04在线接收帧头
 const char TX04_TURONG[] = {"+TURONG "}; //TX04在线接收帧头
 const char TX04_TESTW0_Rec[] = {"+RECW0"};
 const char TX04_TESTW2_Rec[] = {"+RECW2"};
-const char TX04_TECH_Rec[] = {"DTU Software,VERdowa_v01.07\r\n"};
+const char TX04_TECH_Rec[] = {"DTU Software,VERdowa_v01.08\r\n"};
 const char TX04_CMD_ARRY[16][4] = {//指令数组
     "STW0", "STW2", "STR0", "STR2", "TECH",
     "GPON", "GPOF", "GPSQ", "PCH1", "PCH2",
