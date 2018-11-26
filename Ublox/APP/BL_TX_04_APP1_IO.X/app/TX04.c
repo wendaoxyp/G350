@@ -795,7 +795,8 @@ Bool CMDRec_HandleCmd(uartsendstring uart, CMDTYPE cmdtype, uint8_t * Ublox_buf)
             if (TX04IsWorkSta(sta)) {//如果是工作模式                          
                 UbloxCloseTCPClient(); //如果是TCP模式，先关闭连接点
                 UbloxDisablePSD(); //切换到命令模式
-                UART2SendString(TX04_SEND_OFF1, sizeof (TX04_SEND_OFF1)-1); //发送GPOFF1
+                UART2SendString(TX04_SEND_OFF1, sizeof (TX04_SEND_OFF1) - 1); //发送GPOFF1
+                USER_LK = 0; //模块LK拉低
                 EnsureRunArg(&TX04Arg_S);
                 ChangeBaudRate(); //改变波特率
                 gReloadGPRS = True;
@@ -817,6 +818,7 @@ Bool CMDRec_HandleCmd(uartsendstring uart, CMDTYPE cmdtype, uint8_t * Ublox_buf)
                     UbloxCloseTCPClient(); //如果是TCP模式，先关闭连接点
                     UbloxDisablePSD(); //切换到命令模式
                     UART2SendString(TX04_SEND_OFF2, sizeof (TX04_SEND_OFF2) - 1); //发送GPOFF2
+                    USER_LK = 0; //模块LK拉低
                     EnsureRunArg(&TX04Arg2_S);
                     ChangeBaudRate(); //改变波特率
                     gReloadGPRS = True;
