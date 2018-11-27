@@ -204,7 +204,7 @@ static void TCP_Bootloader(uint8_t *Ublox_2_buf, uint8_t getsize2) {
             GLED = 0;
             UART2SendString((uint8_t*) TX04_SEND_OFF, 7);
             gGPRSIsONline = 0;
-            INTCON1bits.ADDRERR = 1; //产生数学错误中断，复位  //IFS1bits.INT1IF = 1; //触发中断，进入复位
+            INTCON1bits.MATHERR = 1; //产生数学错误中断，复位 
         }
         T1CONbits.TON = 1; //开启定时器1，继续开始重启计算时间和发送心跳包时间
     }
