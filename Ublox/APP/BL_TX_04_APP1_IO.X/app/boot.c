@@ -36,7 +36,6 @@ Bool BootLoader(void) {
     BYTE page_id = 0;
     Bool is_read_Right = False, is_write_Right = False;
 
-
     SENDCH_U(1)('W'); //发送服务端提示
     SENDCH_U(1)('0');
     SENDSTR_U(2)((uint8_t*) "Remote Upgrade Start!!!", 23); //发送给仪表端
@@ -46,7 +45,7 @@ Bool BootLoader(void) {
         while (1) {
             /********************Get Command***********************/
             //获取数据
-            getsize = UARTGetDat(BufferRead_UART1, buffer, sizeof (buffer), 50); //获取服务端的数据
+            getsize = UARTGetDat(BufferRead_UART1, buffer, sizeof (buffer), 200); //获取服务端的数据
             headsize = Str_Find_Head(buffer, TR_UPGRADE, getsize, sizeof (TR_UPGRADE)); //是否获取到上线的数据，判断密码是否正确
             if (headsize) {//如果获取到密码
                 for (cnt = 0; cnt < 3; cnt++) {//避免数据溢出，写入代码
@@ -77,7 +76,7 @@ Bool BootLoader(void) {
                     Delay100ms(1);
                 }
                 GLED = 0; //必须灭灯
-                return True;
+                return True;//升级成功退出
             }
         }
         if (is_write_Right) {//如果写入成功，将数据读取出来做判断，是否写入正确
