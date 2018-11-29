@@ -9,7 +9,7 @@
 //Globals ********************************
 DWORD_VAL sourceAddr; //general purpose address variable
 
-char TR_UPGRADE[10] = {0x54, 0x52, 0x5F, 0x55, 0x50, 0x47, 0x52, 0x41, 0x44, 0x45}; // TR_UPGRADE
+char TR_UPGRAD[9] = {0x54, 0x52, 0x5F, 0x55, 0x50, 0x47, 0x52, 0x41, 0x44}; // TR_UPGRAD
 char TR_UPGOV[9] = {0x54, 0x52, 0x5F, 0x55, 0x50, 0x47, 0x4F, 0x56, 0x0D}; // TR_UPGOV 
 char P15_UPG_TIP[12] = {0x50, 0x31, 0x35, 0x5F, 0x55, 0x50, 0x47, 0x5F, 0x4F, 0x4B, '\r', '\n'}; //P15_UPG_OK
 const char BL_REMOTE_PASSWD[6] = {0x54, 0x52, 0x5F, 0x31, 0x30, 0x0B}; //远程升级密码TR_10?
@@ -33,20 +33,20 @@ Bool BootLoader(void) {
     BYTE buffer[540];
     BYTE readdata[520];
     WORD cnt, getsize = 0, headsize = 0, offset; // = 0xFFFF;
-    BYTE page_id = 0;
+    WORD page_id = 0;
     Bool is_read_Right = False, is_write_Right = False;
 
     SENDCH_U(1)('W'); //发送服务端提示
     SENDCH_U(1)('0');
     SENDSTR_U(2)((uint8_t*) "Remote Upgrade Start!!!", 23); //发送给仪表端
-    sourceAddr.Val = BUF_CODE; //设置缓冲区的地址
+    //    sourceAddr.Val = BUF_CODE; //设置缓冲区的地址
     while (1) {
         /********************Enter HMInterface***********************/
-        while (1) {
+        while (1) {//在bootloader程序中，判断0xA000的地址（中断数据）是否是GPU（类似字符，已经在升级上位机中添加了）然后搬运到运行区域
             /********************Get Command***********************/
             //获取数据
-            getsize = UARTGetDat(BufferRead_UART1, buffer, sizeof (buffer), 200); //获取服务端的数据
-            headsize = Str_Find_Head(buffer, TR_UPGRADE, getsize, sizeof (TR_UPGRADE)); //是否获取到上线的数据，判断密码是否正确
+            getsize = UARTGetDat(BufferRead_UART1, buffer, sizeof (buffer), 100); //获取服务端的数据
+            headsize = Str_Find_Head(buffer, TR_UPGRAD, getsize, sizeof (TR_UPGRAD)); //是否获取到上线的数据，判断密码是否正确
             if (headsize) {//如果获取到密码
                 for (cnt = 0; cnt < 3; cnt++) {//避免数据溢出，写入代码
                     getsize += UARTGetDat(BufferRead_UART1, buffer + getsize, sizeof (buffer) - getsize, 10); //514byte time=514/1920=0.27s 分段获取避免数据溢出     
@@ -55,9 +55,15 @@ Bool BootLoader(void) {
                         break;
                     }
                 }
-                offset = headsize + sizeof (TR_UPGRADE) - 1; //设置偏移量
+                offset = headsize + sizeof (TR_UPGRAD); //设置偏移量(包含序号)
                 if ((getsize >= 514 + offset) && CRCIsRight(buffer + offset, 512, buffer + offset + 512)) {//如果CRC校验正确，字节数量是否正确
                     /********************Handle Command***********************/
+                    if (sourceAddr.Val >= 0xA800) {//如果写数据的地址大于配置位所在的页，那么退出
+                        PrintErr(19); //向仪表端发送提示
+                        return False;
+                    }
+                    page_id = buffer[offset - 1]; //获取页码
+                    sourceAddr.Val = BUF_CODE + (page_id << 8);
                     if (!(sourceAddr.Val % PM_PAGE_SIZE))//如果刚好是一页的开头的话，那么进行擦除指令
                         Erase(sourceAddr.word.HW, sourceAddr.word.LW); //清除数据
                     WriteFlashByRow(sourceAddr.Val, buffer + offset, 1); //写入FLASH 512字节    
@@ -76,7 +82,7 @@ Bool BootLoader(void) {
                     Delay100ms(1);
                 }
                 GLED = 0; //必须灭灯
-                return True;//升级成功退出
+                return True; //升级成功退出
             }
         }
         if (is_write_Right) {//如果写入成功，将数据读取出来做判断，是否写入正确
@@ -92,18 +98,14 @@ Bool BootLoader(void) {
             }
         }
         if (is_read_Right) {//如果读取数据校验正确，则页数+1，处理成功提示
-            page_id++;
             P15_UPG_TIP[8] = 'O';
             P15_UPG_TIP[9] = 'K';
-            sourceAddr.Val += 0x100; //地址加上0x100
-            P15_UPG_TIP[1] = (char) (page_id / 10 + 0x30);
-            P15_UPG_TIP[2] = (char) (page_id % 10 + 0x30);
         } else {//如果读取数据校验失败，则处理失败提示
             P15_UPG_TIP[8] = 'E';
             P15_UPG_TIP[9] = 'R';
-            P15_UPG_TIP[1] = (char) ((page_id + 1) / 10 + 0x30);
-            P15_UPG_TIP[2] = (char) ((page_id + 1) % 10 + 0x30);
         }
+        P15_UPG_TIP[1] = (char) (page_id / 10 % 10 + 0x30);
+        P15_UPG_TIP[2] = (char) (page_id % 10 + 0x30);
         SENDSTR_U(2)(P15_UPG_TIP, sizeof (P15_UPG_TIP)); //向仪表端发送提示
         SENDSTR_U(1)(P15_UPG_TIP, sizeof (P15_UPG_TIP)); //向服务端发送提示
         if (page_id > ALL_PAGE) {//如果页数大于规定的页数，返回错误
