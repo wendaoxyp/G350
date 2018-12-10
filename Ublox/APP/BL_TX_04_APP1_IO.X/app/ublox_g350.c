@@ -1277,7 +1277,7 @@ Others: none
 Bool UbloxDisablePSD(void) {
     uint8_t sta = False;
 
-    if (UbloxSendATCmd(Send_DISABLE_ARG, Rec_OK, Null, 40)) {//close tcp and return result
+    if (UbloxSendATCmd(Send_DISABLE_ARG, Rec_OK, Null, 100)) {//close tcp and return result
         sta = True;
     }
     //    if (after_delay_ms)
